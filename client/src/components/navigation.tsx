@@ -95,7 +95,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-card border-l border-border z-50 md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-64 bg-card border-l border-border z-[60] md:hidden transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "transform translate-x-0" : "transform translate-x-full"
         }`}
         data-testid="mobile-menu"
@@ -126,7 +126,7 @@ export default function Navigation() {
       {/* Mobile menu overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-[55] md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
           data-testid="mobile-menu-overlay"
         />
