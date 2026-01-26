@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { 
   FileText, 
   Utensils, 
@@ -51,73 +52,60 @@ export default function ProjectsSection() {
             const IconComponent = projectIcons[project.icon] || FileText;
             
             return (
-              <Card
-                key={project.title}
-                className="project-card rounded-lg overflow-hidden"
-                data-testid={`project-card-${index}`}
-              >
-                <CardContent className="p-6">
-                  {project.image && (
-                    <div className="mb-4 rounded-lg overflow-hidden aspect-video relative">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
-                        data-testid={`project-image-${index}`}
-                      />
+              <Link key={project.title} href={`/project/${index}`}>
+                <Card
+                  className="project-card rounded-lg overflow-hidden cursor-pointer"
+                  data-testid={`project-card-${index}`}
+                >
+                  <CardContent className="p-6">
+                    {project.image && (
+                      <div className="mb-4 rounded-lg overflow-hidden aspect-video relative">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                          data-testid={`project-image-${index}`}
+                        />
+                      </div>
+                    )}
+                    <div className="flex items-center justify-between mb-4">
+                      <IconComponent className="text-primary text-3xl" />
+                      <div className="flex items-center gap-2">
+                        {project.status && (
+                          <span className="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full" data-testid={`project-status-${index}`}>
+                            {project.status}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  <div className="flex items-center justify-between mb-4">
-                    <IconComponent className="text-primary text-3xl" />
-                    <div className="flex items-center gap-2">
-                      {project.status && (
-                        <span className="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full" data-testid={`project-status-${index}`}>
-                          {project.status}
+                    <h3 className="text-xl font-bold mb-3" data-testid={`project-title-${index}`}>
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed line-clamp-2" data-testid={`project-description-${index}`}>
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 bg-primary/10 text-primary text-xs rounded"
+                          data-testid={`project-tech-${index}-${techIndex}`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                          +{project.technologies.length - 3}
                         </span>
                       )}
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                          data-testid={`project-link-${index}`}
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
-                      )}
                     </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3" data-testid={`project-title-${index}`}>
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed" data-testid={`project-description-${index}`}>
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded"
-                        data-testid={`project-tech-${index}-${techIndex}`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-primary hover:text-accent transition-colors"
-                      data-testid={`project-view-link-${index}`}
-                    >
-                      View on {project.linkType} <ArrowRight className="ml-2 w-4 h-4" />
-                    </a>
-                  )}
-                </CardContent>
-              </Card>
+                    <div className="inline-flex items-center text-primary hover:text-accent transition-colors">
+                      View Details <ArrowRight className="ml-2 w-4 h-4" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             );
           })}
         </div>
