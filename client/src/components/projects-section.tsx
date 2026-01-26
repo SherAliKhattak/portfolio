@@ -57,6 +57,16 @@ export default function ProjectsSection() {
                 data-testid={`project-card-${index}`}
               >
                 <CardContent className="p-6">
+                  {project.image && (
+                    <div className="mb-4 rounded-lg overflow-hidden aspect-video relative">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                        data-testid={`project-image-${index}`}
+                      />
+                    </div>
+                  )}
                   <div className="flex items-center justify-between mb-4">
                     <IconComponent className="text-primary text-3xl" />
                     <div className="flex items-center gap-2">

@@ -131,6 +131,7 @@ export const portfolioData = {
       description: "Enables users to efficiently search and browse used cars within their city and preferred price range. Features detailed listings, advanced filtering, and secure transaction options.",
       technologies: ["Flutter", "Firebase", "Marketplace"],
       icon: "CarFront",
+      image: "/src/assets/wheels-n-deals-banner.png",
       link: "https://play.google.com/store/apps",
       linkType: "Play Store"
     },
