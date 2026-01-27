@@ -174,6 +174,25 @@ export const portfolioData = {
       icon: "ShoppingBag",
       link: "https://apps.apple.com/app/shoppy-ai",
       linkType: "App Store"
+    },
+    {
+      title: "Fit Freak",
+      description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
+      technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],
+      icon: "Heart",
+      image: "/src/assets/fitfreak/7.jpeg",
+      gallery: [
+        "/src/assets/fitfreak/1.jpeg",
+        "/src/assets/fitfreak/2.jpeg",
+        "/src/assets/fitfreak/3.jpeg",
+        "/src/assets/fitfreak/4.jpeg",
+        "/src/assets/fitfreak/5.jpeg",
+        "/src/assets/fitfreak/6.jpeg",
+        "/src/assets/fitfreak/7.jpeg",
+        "/src/assets/fitfreak/8.jpeg",
+        "/src/assets/fitfreak/9.jpeg",
+        "/src/assets/fitfreak/10.jpeg"
+      ]
     }
   ]
 };

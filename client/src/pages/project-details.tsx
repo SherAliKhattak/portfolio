@@ -86,7 +86,7 @@ export default function ProjectDetails() {
             </div>
           </div>
 
-          {project.image && (
+          {project.image && !project.gallery && (
             <Card className="overflow-hidden border-border mb-12">
               <CardContent className="p-0">
                 <img 
@@ -96,6 +96,28 @@ export default function ProjectDetails() {
                 />
               </CardContent>
             </Card>
+          )}
+
+          {project.gallery && (
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold mb-6 flex items-center">
+                <Info className="mr-2 text-primary" />
+                Project Screenshots
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {project.gallery.map((img: string, idx: number) => (
+                  <Card key={idx} className="overflow-hidden border-border hover:border-primary transition-colors cursor-pointer group">
+                    <CardContent className="p-0 aspect-[9/19]">
+                      <img 
+                        src={img} 
+                        alt={`${project.title} screenshot ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </section>
           )}
 
           <div className="grid md:grid-cols-3 gap-12">
