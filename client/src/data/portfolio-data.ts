@@ -176,6 +176,13 @@ export const portfolioData = {
       linkType: "App Store"
     },
     {
+      title: "Belconnect",
+      description: "A robust solar monitoring and support application providing comprehensive visibility into installed solar solutions. Features real-time energy overview (generation vs consumption), cost savings analysis (daily and monthly earnings), and detailed battery information. Designed for solar success around the clock.",
+      technologies: ["Flutter", "Solar Monitoring", "Data Visualization", "IoT Integration"],
+      icon: "Sun",
+      image: "/src/assets/belconnect-banner.png"
+    },
+    {
       title: "Fit Freak",
       description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
       technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],

@@ -6,7 +6,7 @@ import {
   FileText, Utensils, Hospital, Car, Video, 
   CarFront, Ambulance, Heart, Truck, 
   Stethoscope, ShoppingBag, ArrowLeft, 
-  ExternalLink, Calendar, Tag, Info
+  ExternalLink, Calendar, Tag, Info, Sun
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +16,7 @@ import { useEffect } from "react";
 const projectIcons: Record<string, any> = {
   FileText, Utensils, Hospital, Car, Video, 
   CarFront, Ambulance, Heart, Truck, 
-  Stethoscope, ShoppingBag
+  Stethoscope, ShoppingBag, Sun
 };
 
 export default function ProjectDetails() {

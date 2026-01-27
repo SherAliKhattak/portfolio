@@ -12,7 +12,8 @@ import {
   Stethoscope, 
   ShoppingBag,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  Sun
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,6 +30,7 @@ const projectIcons: Record<string, any> = {
   Truck,
   Stethoscope,
   ShoppingBag,
+  Sun
 };
 
 export default function ProjectsSection() {
