@@ -176,6 +176,13 @@ export const portfolioData = {
       linkType: "App Store"
     },
     {
+      title: "PopDarts Score Keeper",
+      description: "A specialized scoreboard application for PopDarts enthusiasts. Features a dual-team interface with intuitive point incrementing (+2, +3, +4, +5), match statistics tracking, and a clean, high-contrast UI designed for quick score updates during intense gameplay.",
+      technologies: ["Flutter", "Score Tracking", "Sports UI", "Real-time State"],
+      icon: "Trophy",
+      image: "/src/assets/popdarts-banner.png"
+    },
+    {
       title: "Belconnect",
       description: "A robust solar monitoring and support application providing comprehensive visibility into installed solar solutions. Features real-time energy overview (generation vs consumption), cost savings analysis (daily and monthly earnings), and detailed battery information. Designed for solar success around the clock.",
       technologies: ["Flutter", "Solar Monitoring", "Data Visualization", "IoT Integration"],
