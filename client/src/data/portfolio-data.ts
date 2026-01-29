@@ -78,14 +78,14 @@ export const portfolioData = {
 
   skills: {
     "State Management": ["GetX", "Provider", "BLoC", "Riverpod"],
-    "Backend & Database": ["Firebase", "Supabase", "SQFlite", "REST APIs", "Cloud Firestore"],
-    "Cloud Services": ["Firebase Storage", "Cloud Messaging", "Push Notifications", "Edge Functions"],
+    "Backend & Database": ["Firebase", "Supabase", "SQFlite", "REST APIs", "Cloud Firestore", "GoLang", "AWS"],
+    "Cloud Services": ["Firebase Storage", "Cloud Messaging", "Push Notifications", "Edge Functions", "AWS Lambda", "S3", "EC2"],
     "Architecture & Patterns": ["MVC", "Repository Pattern", "Clean Architecture"],
     "Development Tools": ["FFmpeg", "Isolates", "Multithreading", "File Handling"],
     "Payments & Storage": ["Stripe Integration", "Shared Preferences", "Local Storage"],
     "UI/UX": ["Responsive Design", "Rive Animations", "Lottie", "Custom UI"],
-    "Deployment": ["Play Store", "App Store", "CI/CD"],
-    "Programming": ["Dart", "Flutter", ".NET Framework", "Background Services"]
+    "Deployment": ["Play Store", "App Store", "CI/CD", "AWS CodePipeline"],
+    "Programming": ["Dart", "Flutter", ".NET Framework", "Background Services", "React Native", "Go"]
   },
 
   projects: [
