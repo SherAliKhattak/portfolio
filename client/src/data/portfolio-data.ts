@@ -176,6 +176,13 @@ export const portfolioData = {
       linkType: "App Store"
     },
     {
+      title: "AR Virtual Try-On",
+      description: "An innovative augmented reality application developed with ARKit that allows users to virtually try on products in real-time. Features precise spatial tracking, realistic 3D model rendering, and a seamless user interface for exploring different product variants in a live camera view.",
+      technologies: ["Flutter", "ARKit", "Augmented Reality", "3D Rendering"],
+      icon: "Camera",
+      video: "/src/assets/videos/virtual-tryon.mov"
+    },
+    {
       title: "PopDarts Score Keeper",
       description: "A specialized scoreboard application for PopDarts enthusiasts. Features a dual-team interface with intuitive point incrementing (+2, +3, +4, +5), match statistics tracking, and a clean, high-contrast UI designed for quick score updates during intense gameplay.",
       technologies: ["Flutter", "Score Tracking", "Sports UI", "Real-time State"],

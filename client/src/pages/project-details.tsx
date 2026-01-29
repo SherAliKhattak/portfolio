@@ -6,7 +6,7 @@ import {
   FileText, Utensils, Hospital, Car, Video, 
   CarFront, Ambulance, Heart, Truck, 
   Stethoscope, ShoppingBag, ArrowLeft, 
-  ExternalLink, Calendar, Tag, Info, Sun, Trophy
+  ExternalLink, Calendar, Tag, Info, Sun, Trophy, Camera
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +16,7 @@ import { useEffect } from "react";
 const projectIcons: Record<string, any> = {
   FileText, Utensils, Hospital, Car, Video, 
   CarFront, Ambulance, Heart, Truck, 
-  Stethoscope, ShoppingBag, Sun, Trophy
+  Stethoscope, ShoppingBag, Sun, Trophy, Camera
 };
 
 export default function ProjectDetails() {
@@ -85,6 +85,24 @@ export default function ProjectDetails() {
               </div>
             </div>
           </div>
+
+          {project.video && (
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold mb-6 flex items-center">
+                <Video className="mr-2 text-primary" />
+                Project Demo
+              </h2>
+              <Card className="overflow-hidden border-border bg-black aspect-[9/16] max-w-sm mx-auto">
+                <CardContent className="p-0 h-full">
+                  <video 
+                    src={project.video} 
+                    controls 
+                    className="w-full h-full object-contain"
+                  />
+                </CardContent>
+              </Card>
+            </section>
+          )}
 
           {project.image && !project.gallery && (
             <Card className="overflow-hidden border-border mb-12">
