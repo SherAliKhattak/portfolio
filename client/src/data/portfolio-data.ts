@@ -1,3 +1,21 @@
+import wheelsNDealsBanner from "@/assets/wheels-n-deals-banner.png";
+import belconnectBanner from "@/assets/belconnect-banner.png";
+import popdartsBanner from "@/assets/popdarts-banner.png";
+
+// Import FitFreak images
+import ff1 from "@/assets/fitfreak/1.jpeg";
+import ff2 from "@/assets/fitfreak/2.jpeg";
+import ff3 from "@/assets/fitfreak/3.jpeg";
+import ff4 from "@/assets/fitfreak/4.jpeg";
+import ff5 from "@/assets/fitfreak/5.jpeg";
+import ff6 from "@/assets/fitfreak/6.jpeg";
+import ff7 from "@/assets/fitfreak/7.jpeg";
+import ff8 from "@/assets/fitfreak/8.jpeg";
+import ff9 from "@/assets/fitfreak/9.jpeg";
+import ff10 from "@/assets/fitfreak/10.jpeg";
+
+import virtualTryonVideo from "@/assets/videos/virtual-tryon.mov";
+
 export const portfolioData = {
   personal: {
     name: "Sher Ali Khattak",
@@ -28,11 +46,11 @@ export const portfolioData = {
     },
     {
       position: "Flutter Developer",
-      company: "Riayatech",
+      company: "Beacon Energy",
       location: "Islamabad, Pakistan",
       period: "Aug 2023 - Feb 2024",
       responsibilities: [
-        "Contributed to a healthcare software product, focusing on API integration, debugging, and data handling.",
+        "Contributed to energy monitoring solutions, focusing on API integration, debugging, and data handling.",
         "Improved UI/UX and collaborated in a fast-paced team environment, gaining real-world development experience."
       ]
     },
@@ -131,7 +149,7 @@ export const portfolioData = {
       description: "Enables users to efficiently search and browse used cars within their city and preferred price range. Features detailed listings, advanced filtering, and secure transaction options.",
       technologies: ["Flutter", "Firebase", "Marketplace"],
       icon: "CarFront",
-      image: "/src/assets/wheels-n-deals-banner.png",
+      image: wheelsNDealsBanner,
       link: "https://play.google.com/store/apps",
       linkType: "Play Store"
     },
@@ -180,40 +198,29 @@ export const portfolioData = {
       description: "An innovative augmented reality application developed with ARKit that allows users to virtually try on products in real-time. Features precise spatial tracking, realistic 3D model rendering, and a seamless user interface for exploring different product variants in a live camera view.",
       technologies: ["Flutter", "ARKit", "Augmented Reality", "3D Rendering"],
       icon: "Camera",
-      video: "/src/assets/videos/virtual-tryon.mov"
+      video: virtualTryonVideo
     },
     {
       title: "PopDarts Score Keeper",
       description: "A specialized scoreboard application for PopDarts enthusiasts. Features a dual-team interface with intuitive point incrementing (+2, +3, +4, +5), match statistics tracking, and a clean, high-contrast UI designed for quick score updates during intense gameplay.",
       technologies: ["Flutter", "Score Tracking", "Sports UI", "Real-time State"],
       icon: "Trophy",
-      image: "/src/assets/popdarts-banner.png"
+      image: popdartsBanner
     },
     {
       title: "Belconnect",
       description: "A robust solar monitoring and support application providing comprehensive visibility into installed solar solutions. Features real-time energy overview (generation vs consumption), cost savings analysis (daily and monthly earnings), and detailed battery information. Designed for solar success around the clock.",
       technologies: ["Flutter", "Solar Monitoring", "Data Visualization", "IoT Integration"],
       icon: "Sun",
-      image: "/src/assets/belconnect-banner.png"
+      image: belconnectBanner
     },
     {
       title: "Fit Freak",
       description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
       technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],
       icon: "Heart",
-      image: "/src/assets/fitfreak/7.jpeg",
-      gallery: [
-        "/src/assets/fitfreak/1.jpeg",
-        "/src/assets/fitfreak/2.jpeg",
-        "/src/assets/fitfreak/3.jpeg",
-        "/src/assets/fitfreak/4.jpeg",
-        "/src/assets/fitfreak/5.jpeg",
-        "/src/assets/fitfreak/6.jpeg",
-        "/src/assets/fitfreak/7.jpeg",
-        "/src/assets/fitfreak/8.jpeg",
-        "/src/assets/fitfreak/9.jpeg",
-        "/src/assets/fitfreak/10.jpeg"
-      ]
+      image: ff7,
+      gallery: [ff1, ff2, ff3, ff4, ff5, ff6, ff7, ff8, ff9, ff10]
     }
   ]
 };
