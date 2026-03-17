@@ -67,15 +67,18 @@ app.use((req, res, next) => {
   }
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
+  // Default to 3000 if not specified (5000 is often used by AirPlay on macOS)
   // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  const port = parseInt(process.env.PORT || '3000', 10);
+  server.listen(port, "0.0.0.0", () => {
     log(`serving on port ${port}`);
+  }).on('error', (err: NodeJS.ErrnoException) => {
+    if (err.code === 'EADDRINUSE') {
+      log(`❌ Port ${port} is already in use. Try: lsof -ti:${port} | xargs kill -9`, "error");
+      log(`   Or use a different port: PORT=3001 npm run dev`, "error");
+      process.exit(1);
+    } else {
+      throw err;
+    }
   });
 })();

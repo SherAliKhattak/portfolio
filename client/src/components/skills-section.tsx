@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { 
   Layers, 
   Database, 
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedSection } from "./animated-section";
 
 const skillIcons: Record<string, any> = {
   "State Management": Layers,
@@ -30,20 +32,37 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-            <span className="gradient-text">Technical Skills</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
+              <span className="gradient-text">Technical Skills</span>
+            </h2>
+            <div className="section-title-underline" />
+          </div>
+        </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.06 } },
+          }}
+        >
           {Object.entries(skills).map(([category, skillList], index) => {
             const IconComponent = skillIcons[category] || Code;
             
             return (
-              <Card
+              <motion.div
                 key={category}
+                variants={{
+                  hidden: { opacity: 0, y: 24 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+                }}
+              >
+              <Card
                 className="bg-card border-border hover:border-primary transition-all duration-300"
                 data-testid={`skill-category-${index}`}
               >
@@ -67,9 +86,10 @@ export default function SkillsSection() {
                   </div>
                 </CardContent>
               </Card>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

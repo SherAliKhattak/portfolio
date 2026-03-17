@@ -1,6 +1,17 @@
+import { motion } from "framer-motion";
 import { MapPin, Briefcase, GraduationCap, CheckCircle } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedSection } from "./animated-section";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
 
 export default function AboutSection() {
   const { personal } = portfolioData;
@@ -8,16 +19,19 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-            <span className="gradient-text">About Me</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
+              <span className="gradient-text">About Me</span>
+            </h2>
+            <div className="section-title-underline" />
+          </div>
+        </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <Card className="bg-card border-border hover:border-primary transition-all duration-300">
+          <motion.div className="space-y-6" variants={{ visible: { transition: { staggerChildren: 0.08 } } }} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+            <motion.div variants={cardVariants} custom={0}>
+              <Card className="bg-card border-border hover:border-primary transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
@@ -30,7 +44,9 @@ export default function AboutSection() {
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
 
+            <motion.div variants={cardVariants} custom={1}>
             <Card className="bg-card border-border hover:border-primary transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
@@ -44,7 +60,9 @@ export default function AboutSection() {
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
 
+            <motion.div variants={cardVariants} custom={2}>
             <Card className="bg-card border-border hover:border-primary transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
@@ -59,8 +77,10 @@ export default function AboutSection() {
                 </div>
               </CardContent>
             </Card>
-          </div>
+            </motion.div>
+          </motion.div>
 
+          <AnimatedSection delay={0.2}>
           <div className="space-y-6">
             <h3 className="text-3xl font-bold mb-6" data-testid="about-title">
               Passionate About Creating Exceptional Mobile Experiences
@@ -89,6 +109,7 @@ export default function AboutSection() {
               </span>
             </div>
           </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

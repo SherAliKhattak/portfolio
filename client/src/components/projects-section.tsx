@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 import { 
   FileText, 
   Utensils, 
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedSection } from "./animated-section";
 
 const projectIcons: Record<string, any> = {
   FileText,
@@ -43,31 +45,49 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-            <span className="gradient-text">Featured Projects</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            A collection of mobile applications I've developed, ranging from healthcare solutions to e-commerce platforms
-          </p>
-        </div>
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
+              <span className="gradient-text">Featured Projects</span>
+            </h2>
+            <div className="section-title-underline" />
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+              A collection of mobile applications I've developed, ranging from healthcare solutions to e-commerce platforms
+            </p>
+          </div>
+        </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
           {projects.map((project, index) => {
             const IconComponent = projectIcons[project.icon] || FileText;
             
             return (
-              <Link key={project.title} href={`/project/${index}`}>
+              <motion.div
+                key={project.title}
+                variants={{
+                  hidden: { opacity: 0, y: 32 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+                }}
+              >
+              <Link href={`/project/${index}`}>
                 <Card
                   className="project-card rounded-lg overflow-hidden cursor-pointer"
                   data-testid={`project-card-${index}`}
                 >
                   <CardContent className="p-6">
-                    {project.image && (
+                    {(project.image || project.gallery?.[0]) && (
                       <div className="mb-4 rounded-lg overflow-hidden aspect-video relative">
                         <img 
-                          src={project.image} 
+                          src={project.image || project.gallery?.[0]} 
                           alt={project.title}
                           className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                           data-testid={`project-image-${index}`}
@@ -112,9 +132,10 @@ export default function ProjectsSection() {
                   </CardContent>
                 </Card>
               </Link>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

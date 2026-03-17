@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import { Calendar, MapPin, ChevronRight } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedSection } from "./animated-section";
 
 export default function ExperienceSection() {
   const { experience } = portfolioData;
@@ -8,17 +10,23 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-            <span className="gradient-text">Work Experience</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
+              <span className="gradient-text">Work Experience</span>
+            </h2>
+            <div className="section-title-underline" />
+          </div>
+        </AnimatedSection>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-2">
           {experience.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               className="relative border-l-2 border-border pl-8 pb-12 timeline-item"
               data-testid={`experience-item-${index}`}
             >
@@ -52,7 +60,7 @@ export default function ExperienceSection() {
                   </ul>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

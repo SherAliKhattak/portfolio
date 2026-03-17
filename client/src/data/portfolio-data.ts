@@ -1,31 +1,62 @@
-import wheelsNDealsBanner from "@/assets/wheels-n-deals-banner.png";
-import belconnectBanner from "@/assets/belconnect-banner.png";
-import popdartsBanner from "@/assets/popdarts-banner.png";
+import fastwheel1 from "@/assets/fastwheel-1.png";
+import fastwheel2 from "@/assets/fastwheel-2.png";
+import fastwheel3 from "@/assets/fastwheel-3.png";
+import fastwheel4 from "@/assets/fastwheel-4.png";
+import popdarts1 from "@/assets/popdarts-1.png";
+import popdarts2 from "@/assets/popdarts-2.png";
+import popdarts3 from "@/assets/popdarts-3.png";
+import popdarts4 from "@/assets/popdarts-4.png";
+import popdarts5 from "@/assets/popdarts-5.png";
+import popdarts6 from "@/assets/popdarts-6.png";
+import popdarts7 from "@/assets/popdarts-7.png";
+import popdarts8 from "@/assets/popdarts-8.png";
+import ihealthcure1 from "@/assets/ihealthcure-1.png";
+import ihealthcure2 from "@/assets/ihealthcure-2.png";
+import ihealthcure3 from "@/assets/ihealthcure-3.png";
+import ihealthcure4 from "@/assets/ihealthcure-4.png";
+import ihealthcureRider1 from "@/assets/ihealthcure-rider-1.png";
+import ihealthcureRider2 from "@/assets/ihealthcure-rider-2.png";
+import ihealthcureRider3 from "@/assets/ihealthcure-rider-3.png";
+import ihealthcureDoctor1 from "@/assets/ihealthcure-doctor-1.png";
+import ihealthcureDoctor2 from "@/assets/ihealthcure-doctor-2.png";
+import ihealthcureDoctor3 from "@/assets/ihealthcure-doctor-3.png";
+import ihealthcureDoctor4 from "@/assets/ihealthcure-doctor-4.png";
+import ihealthcureDoctor5 from "@/assets/ihealthcure-doctor-5.png";
+import jjdeliveries1 from "@/assets/jjdeliveries-1.png";
+import jjdeliveries2 from "@/assets/jjdeliveries-2.png";
+import jjdeliveries3 from "@/assets/jjdeliveries-3.png";
+import jjdeliveries4 from "@/assets/jjdeliveries-4.png";
+import jjdeliveries5 from "@/assets/jjdeliveries-5.png";
+import truckkaro1 from "@/assets/truckkaro-1.png";
+import truckkaro2 from "@/assets/truckkaro-2.png";
+import truckkaro3 from "@/assets/truckkaro-3.png";
 
-// Import FitFreak images
-import ff1 from "@/assets/fitfreak/1.jpeg";
-import ff2 from "@/assets/fitfreak/2.jpeg";
-import ff3 from "@/assets/fitfreak/3.jpeg";
-import ff4 from "@/assets/fitfreak/4.jpeg";
-import ff5 from "@/assets/fitfreak/5.jpeg";
-import ff6 from "@/assets/fitfreak/6.jpeg";
-import ff7 from "@/assets/fitfreak/7.jpeg";
-import ff8 from "@/assets/fitfreak/8.jpeg";
-import ff9 from "@/assets/fitfreak/9.jpeg";
-import ff10 from "@/assets/fitfreak/10.jpeg";
+// Import FitFreak screenshot
+import fitfreakScreenshot from "@assets/fitfreakcover.png";
 
-import virtualTryonVideo from "@/assets/videos/virtual-tryon.mov";
+import opticalfitLogo from "@/assets/opticalfit-logo.png";
+import opticalfit1 from "@/assets/opticalfit-1.png";
+import opticalfit2 from "@/assets/opticalfit-2.png";
+import opticalfit3 from "@/assets/opticalfit-3.png";
+import opticalfit4 from "@/assets/opticalfit-4.png";
+import opticalfit5 from "@/assets/opticalfit-5.png";
+import opticalfit6 from "@/assets/opticalfit-6.png";
+import opticalfit7 from "@/assets/opticalfit-7.png";
+import opticalfit8 from "@/assets/opticalfit-8.png";
+import opticalfitVideo from "@/assets/videos/opticalfit-demo.mp4";
 
 export const portfolioData = {
   personal: {
     name: "Sher Ali Khattak",
-    title: "Senior Flutter Developer",
+    title: "Full Stack Mobile Developer | Flutter & Native Tech",
     location: "Islamabad, Pakistan",
     email: "skhattak30@gmail.com",
     phones: ["+92 370 3472420", "+92 332 5342357"],
     github: "https://github.com/SherAliKhattak",
-    linkedin: "https://linkedin.com/in/SherAliKhattak",
-    summary: "Driven by curiosity and a passion for user-friendly apps, I self-taught Flutter, building a strong foundation to craft bug-free experiences that delight. Curiosity ignited my passion for coding, and Flutter became my weapon of choice. I forge user-centric apps, pixel-perfect and bug-free, for experiences that truly resonate.",
+    linkedin: "https://www.linkedin.com/in/sher-ali-khattak-464685207/",
+    playStore: "https://play.google.com/store/apps/developer?id=Sher+Ali+Khattak",
+    appStore: "https://apps.apple.com/us/search?term=Sher%20Ali%20Khattak&entity=software",
+    summary: "Self-taught Full Stack Mobile Application Developer with proven expertise in Flutter and React Native frameworks. Experienced in end-to-end development of CRM systems, HRMS platforms, E-commerce applications, IoT and BLE integrations, Desktop Applications, Web Applications, and Food Delivery platforms. Demonstrated ability to deliver scalable, bug-free, and user-friendly solutions across multiple domains. Proficient in RESTful API integration, database management, and third-party service implementation to build seamless cross-platform experiences. Adept at working with modern development tools, agile methodologies, and software development life cycle (SDLC) best practices. Committed to continuous learning, emerging technology adoption, and innovation-driven development to meet evolving business and user needs.",
     aboutDetails: [
       "With a strong foundation in Computer Systems Engineering and years of hands-on experience, I specialize in building cross-platform mobile applications using Flutter. My journey started with curiosity and self-learning, which has evolved into a career focused on creating pixel-perfect, user-centric applications.",
       "I've successfully delivered projects ranging from healthcare solutions to e-commerce platforms, always prioritizing clean architecture, performance optimization, and delightful user experiences. My expertise spans state management, Firebase integration, API development, and deploying production-ready apps to both major app stores."
@@ -34,45 +65,45 @@ export const portfolioData = {
   
   experience: [
     {
-      position: "Senior Flutter Developer",
+      position: "Senior App Developer",
+      company: "Beacon Energy Pvt Ltd",
+      location: "Islamabad, Pakistan",
+      period: "Sep 2024 - Present",
+      responsibilities: [
+        "Led the architecture, development, and maintenance of multiple cross-platform mobile applications resulting in a 3000+ active user base, 99.9% uptime, and a 40% increase in overall performance across iOS and Android production environments.",
+        "Collaborated with Quality assurance team, Managers, Designers and NOC to add features according to customer satisfaction."
+      ]
+    },
+    {
+      position: "Flutter Developer",
       company: "Duseca Software",
       location: "Islamabad, Pakistan",
-      period: "Jan 2024 - Present",
+      period: "Jan 2024 - Aug 2025",
       responsibilities: [
-        "Integrated seamless front-end and back-end solutions using Firebase and REST APIs, with proven expertise in debugging, performance optimization, and deploying applications to both the Play Store and App Store.",
-        "Collaborated with fellow developers to implement features across multiple long-term projects.",
-        "Actively engaged with clients to understand their requirements and ensure successful project delivery."
+        "Improved code quality and on-time delivery compliance by 70% through collaboration with 4 cross-functional teams.",
+        "Introduced and integrated software testing frameworks and QA tools, improving code coverage and reducing post-release bug reports by 30% through systematic quality assurance processes.",
+        "Troubleshooted and maintained existing applications according to app requirements."
       ]
     },
     {
-      position: "Flutter Developer",
-      company: "Beacon Energy",
+      position: "Junior App Developer",
+      company: "Dcodax Pvt, LTD",
       location: "Islamabad, Pakistan",
-      period: "Aug 2023 - Feb 2024",
+      period: "May 2022 - Dec 2023",
       responsibilities: [
-        "Contributed to energy monitoring solutions, focusing on API integration, debugging, and data handling.",
-        "Improved UI/UX and collaborated in a fast-paced team environment, gaining real-world development experience."
+        "Architected applications from scratch based on client requirements, and troubleshoot existing features focusing on seamless UI, performance optimization, and clean architecture.",
+        "Boosted app user engagement by 40% by enhancing UI with Rive and Lottie animations.",
+        "Worked under the leadership of Senior App developers to enhance existing applications."
       ]
     },
     {
-      position: "Flutter Developer",
-      company: "DcodaxPvt, LTD",
-      location: "Islamabad, Pakistan",
-      period: "Aug 2022 - July 2023",
-      responsibilities: [
-        "Developed applications from scratch based on client requirements, focusing on seamless UI, performance optimization, and clean architecture.",
-        "Collaborated with senior developers to enhance existing apps with new features and visually engaging UI using Rive and Lottie animations."
-      ]
-    },
-    {
-      position: "Freelance Flutter Development",
-      company: "Self-Employed",
+      position: "Freelance App Developer",
+      company: "Self-employed",
       location: "Remote",
-      period: "Part-time",
+      period: "2021 - Present",
       responsibilities: [
-        "Worked part-time on freelance projects, delivering high-quality Flutter apps tailored to client requirements and deadlines.",
-        "Helped clients achieve their goals by translating ideas into functional, user-friendly mobile applications.",
-        "Collaborated with open-source developers to integrate new features and improve UI/UX in community-driven apps."
+        "Worked on 10+ mobile applications on time and within budget.",
+        "Increased client satisfaction by 40%."
       ]
     }
   ],
@@ -82,14 +113,14 @@ export const portfolioData = {
       degree: "Bachelor of Science",
       field: "Computer Systems Engineering",
       institution: "University of Engineering & Technology, Peshawar",
-      period: "2018 - 2022",
-      description: "Gained expertise in computer architecture, embedded systems, networking, and software development. Focused on automation, system optimization, and innovative computing solutions."
+      period: "08/2018 - 08/2022",
+      description: "Gained experience in computer architecture, embedded systems, programming, networking, and software development. Focused on automation, system optimization, and designed innovative computing solutions."
     },
     {
       degree: "Pre Engineering",
       field: "FSc Pre-Engineering", 
       institution: "Islamia College Peshawar",
-      period: "2015 - 2017",
+      period: "05/2015 - 04/2017",
       description: "Developed a strong foundation in mathematics, physics, and chemistry, with a focus on problem-solving, analytical thinking, and technical concepts essential for engineering studies."
     }
   ],
@@ -108,119 +139,81 @@ export const portfolioData = {
 
   projects: [
     {
-      title: "Image To PDF Converter",
-      description: "This app empowers you to effortlessly transform your photos into neatly organized PDFs. Features intuitive UI with batch processing capabilities.",
-      technologies: ["Flutter", "PDF", "File Handling"],
-      icon: "FileText",
-      link: "https://github.com/SherAliKhattak",
-      linkType: "GitHub"
-    },
-    {
-      title: "Faintech Food Delivery",
-      description: "Developed a full-featured food delivery app with real-time order tracking, secure payments, and restaurant browsing. Focused on seamless UI/UX and efficient backend integration.",
-      technologies: ["Flutter", "Firebase", "Real-time"],
-      icon: "Utensils",
-      link: "https://github.com/SherAliKhattak",
-      linkType: "GitHub"
-    },
-    {
-      title: "Taakad Lab",
-      description: "Healthcare initiative driven by helping 'Patient Experiences' through meeting their growing hopes and satisfying their demands with effective technology engagements.",
+      title: "iHealthCure Lab",
+      description: "Healthcare initiative driven by helping 'Patient Experiences' through meeting their growing hopes and satisfying their demands with effective technology engagements. Enables patients to access medical records, book appointments, order medicines, view lab reports, and manage health services with an integrated wallet.",
       technologies: ["Flutter", ".NET", "Healthcare"],
       icon: "Hospital",
-      link: "https://apps.apple.com/app/taakad-lab",
+      gallery: [ihealthcure1, ihealthcure2, ihealthcure3, ihealthcure4],
+      link: "https://apps.apple.com/pk/app/ihealthcure-lab/id6477693252",
       linkType: "App Store"
     },
     {
-      title: "Car Sales App",
-      description: "A cross-platform mobile app for buying and selling new or used cars, featuring secure authentication, detailed vehicle listings, advanced search filters, real-time chat, and integrated maps.",
-      technologies: ["Flutter", "Supabase", "E-commerce"],
-      icon: "Car",
-      status: "Awaiting Deployment"
+      title: "iHealthCure Rider",
+      description: "Rider app for laboratory sample collection from patient homes. Riders manage appointments, view today's schedule and history, receive status notifications, and navigate to patient locations with map integration and live location tracking.",
+      technologies: ["Flutter", ".NET", "Healthcare", "Maps"],
+      icon: "Ambulance",
+      gallery: [ihealthcureRider1, ihealthcureRider2, ihealthcureRider3],
+      appStore: "https://apps.apple.com/pk/app/ihealthcure-rider/id6477693439"
     },
     {
-      title: "Video Booth",
-      description: "A cross-platform video booth app with 360° video capture, image-to-GIF conversion, boomerang creation, and an integrated gallery for easy viewing and sharing of media.",
-      technologies: ["Flutter", "FFmpeg", "Media Processing"],
-      icon: "Video"
+      title: "iHealthCure Doctor",
+      description: "Telemedicine app for doctors to provide online clinical consultations anywhere, anytime. Features waiting queue, online/offline status, appointment configuration, manage bookings, consulted vault for prescriptions, wallet for finances, and video consultations with patients.",
+      technologies: ["Flutter", ".NET", "Healthcare", "Telemedicine"],
+      icon: "Stethoscope",
+      gallery: [ihealthcureDoctor1, ihealthcureDoctor2, ihealthcureDoctor3, ihealthcureDoctor4, ihealthcureDoctor5],
+      playStore: "https://play.google.com/store/apps/details?id=techovative.ihealthcure.doctor&hl=en"
     },
     {
-      title: "Wheels n Deals",
-      description: "Enables users to efficiently search and browse used cars within their city and preferred price range. Features detailed listings, advanced filtering, and secure transaction options.",
+      title: "FastWheel: Buy & Sell Cars",
+      description: "Pakistan's No.1 marketplace to buy and sell new or used cars. Search over half a million cars, use advanced filters (make, model, price, mileage), create adverts in minutes, and get instant notifications on saved searches. Features free car valuation, dealer reviews, and finance options.",
       technologies: ["Flutter", "Firebase", "Marketplace"],
       icon: "CarFront",
-      image: wheelsNDealsBanner,
-      link: "https://play.google.com/store/apps",
-      linkType: "Play Store"
-    },
-    {
-      title: "Sidra Rider",
-      description: "This user-friendly Flutter-based intuitive app empowers registered riders to seamlessly manage appointments, view profiles, receive notifications, and navigate through patient locations.",
-      technologies: ["Flutter", ".NET", "Maps"],
-      icon: "Ambulance",
-      link: "https://apps.apple.com/app/sidra-rider",
-      linkType: "App Store"
-    },
-    {
-      title: "SIDRA Patient Care",
-      description: "An innovative and user-friendly Flutter-based healthcare application designed to provide seamless access to a wide range of medical services and resources right at your fingertips.",
-      technologies: ["Flutter", ".NET", "Healthcare"],
-      icon: "Heart",
-      link: "https://apps.apple.com/app/sidra-patient-care",
-      linkType: "App Store"
+      gallery: [fastwheel1, fastwheel2, fastwheel3, fastwheel4],
+      playStore: "https://play.google.com/store/apps/details?id=com.wheeldeals.wheelsanddeals"
     },
     {
       title: "JJ Deliveries",
-      description: "Get food delivered to your doorstep from incredible local restaurants. Find what you want and order it with ease on the JJ's Deliveries app.",
+      description: "Enhanced delivery reach to 1000+ customers by partnering with 20 local restaurants for doorstep service. Increased customer satisfaction by 50% by enhancing the order process on JJ's Deliveries app.",
       technologies: ["Flutter", "Delivery", "Real-time"],
       icon: "Truck",
-      link: "https://apps.apple.com/app/jj-deliveries",
+      gallery: [jjdeliveries1, jjdeliveries2, jjdeliveries3, jjdeliveries4, jjdeliveries5],
+      playStore: "https://play.google.com/store/apps/details?id=com.jjs.deliveries_food&hl=en",
+      appStore: "https://apps.apple.com/app/jj-deliveries"
+    },
+    {
+      title: "TrucKKaro",
+      description: "Business app for water and fuel delivery with live market prices. Features OTP registration, location tracking, add to cart, express and scheduled delivery, Google Maps integration, and real-time driver tracking for customers. Supports multi-language (Urdu/English) and dark/light theme.",
+      technologies: ["Flutter", "Google Maps", "Real-time", "E-commerce"],
+      icon: "Truck",
+      gallery: [truckkaro1, truckkaro2, truckkaro3],
+      link: "https://apps.apple.com/pk/app/truckkaro/id6464123640",
       linkType: "App Store"
     },
     {
-      title: "Sidra Doctor",
-      description: "Sidra Doctor App is a comprehensive mobile solution designed to optimize online consultations for healthcare professionals. With a secure and user-friendly interface.",
-      technologies: ["Flutter", ".NET", "Telemedicine"],
-      icon: "Stethoscope",
-      link: "https://apps.apple.com/app/sidra-doctor",
-      linkType: "App Store"
-    },
-    {
-      title: "Shoppy AI",
-      description: "Shop smarter with Shoppy AI! Just scan any product, and our AI finds the best deals online in seconds. Fast, seamless, and effortless shopping.",
-      technologies: ["Flutter", "AI/ML", "E-commerce"],
-      icon: "ShoppingBag",
-      link: "https://apps.apple.com/app/shoppy-ai",
-      linkType: "App Store"
-    },
-    {
-      title: "AR Virtual Try-On",
-      description: "An innovative augmented reality application developed with ARKit that allows users to virtually try on products in real-time. Features precise spatial tracking, realistic 3D model rendering, and a seamless user interface for exploring different product variants in a live camera view.",
-      technologies: ["Flutter", "ARKit", "Augmented Reality", "3D Rendering"],
+      title: "OpticalFit",
+      description: "Custom eyewear app for browsing and ordering prescription glasses. Features eye prescription display, frame type selection (Full-Rim, Semi-Rimless, Rimless, Low Bridge Fit), AR virtual try-on with face tracking, segment height measurement for bifocals, and integrated payment (credit card, bank account, PayServices). Custom-made for your prescription with lens coating options.",
+      technologies: ["Flutter", "ARKit", "Augmented Reality", "E-commerce"],
       icon: "Camera",
-      video: virtualTryonVideo
+      gallery: [opticalfitLogo, opticalfit1, opticalfit2, opticalfit3, opticalfit4, opticalfit5, opticalfit6, opticalfit7, opticalfit8],
+      video: opticalfitVideo
     },
     {
       title: "PopDarts Score Keeper",
-      description: "A specialized scoreboard application for PopDarts enthusiasts. Features a dual-team interface with intuitive point incrementing (+2, +3, +4, +5), match statistics tracking, and a clean, high-contrast UI designed for quick score updates during intense gameplay.",
-      technologies: ["Flutter", "Score Tracking", "Sports UI", "Real-time State"],
+      description: "Take your Popdarts game to the next level with the official Popdarts Scorekeeper app. Effortlessly track scores for multiple players, stay connected with the Popdarts community for updates and challenges, and use the Stat Track feature to log trick shots. Perfect for game nights, tournaments, and practice.",
+      technologies: ["Flutter", "Score Tracking", "Sports UI", "Firebase"],
       icon: "Trophy",
-      image: popdartsBanner
-    },
-    {
-      title: "Belconnect",
-      description: "A robust solar monitoring and support application providing comprehensive visibility into installed solar solutions. Features real-time energy overview (generation vs consumption), cost savings analysis (daily and monthly earnings), and detailed battery information. Designed for solar success around the clock.",
-      technologies: ["Flutter", "Solar Monitoring", "Data Visualization", "IoT Integration"],
-      icon: "Sun",
-      image: belconnectBanner
+      gallery: [popdarts1, popdarts2, popdarts3, popdarts4, popdarts5, popdarts6, popdarts7, popdarts8],
+      playStore: "https://play.google.com/store/apps/details?id=com.firebase.popdarts&hl=en"
     },
     {
       title: "Fit Freak",
       description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
       technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],
       icon: "Heart",
-      image: ff7,
-      gallery: [ff1, ff2, ff3, ff4, ff5, ff6, ff7, ff8, ff9, ff10]
+      image: fitfreakScreenshot,
+      gallery: [fitfreakScreenshot],
+      playStore: "https://play.google.com/store/apps/details?id=com.duseca.fitfreak",
+      appStore: "https://apps.apple.com/us/app/fit-freak-pro/id6742347988"
     }
   ]
 };

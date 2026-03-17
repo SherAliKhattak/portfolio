@@ -24,6 +24,10 @@ export async function setupVite(app: Express, server: Server) {
     middlewareMode: true,
     hmr: { server },
     allowedHosts: true as const,
+    fs: {
+      strict: false,
+      allow: ['..'],
+    },
   };
 
   const vite = await createViteServer({
@@ -40,9 +44,14 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
+  // Vite middleware handles assets, HMR, and dev server requests
   app.use(vite.middlewares);
+  
+  // Catch-all route for HTML pages (after Vite middleware for assets)
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
+    
+    log(`Handling request: ${url}`, "vite-setup");
 
     try {
       const clientTemplate = path.resolve(
@@ -51,6 +60,11 @@ export async function setupVite(app: Express, server: Server) {
         "client",
         "index.html",
       );
+
+      if (!fs.existsSync(clientTemplate)) {
+        log(`Template not found: ${clientTemplate}`, "vite-setup");
+        return res.status(404).send("Template not found");
+      }
 
       // always reload the index.html file from disk incase it changes
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
@@ -61,6 +75,7 @@ export async function setupVite(app: Express, server: Server) {
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
+      log(`Error in catch-all: ${e}`, "vite-setup");
       vite.ssrFixStacktrace(e as Error);
       next(e);
     }

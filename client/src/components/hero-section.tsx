@@ -1,6 +1,22 @@
+import { motion } from "framer-motion";
 import { ChevronDown, Code, Mail, Folder } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Button } from "@/components/ui/button";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 },
+};
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
 
 export default function HeroSection() {
   const { personal } = portfolioData;
@@ -30,30 +46,47 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="hero-gradient min-h-screen flex items-center justify-center pt-16">
+    <section id="home" className="hero-gradient min-h-screen flex items-center justify-center pt-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="text-center">
-          <div className="mb-6">
+        <motion.div
+          className="text-center"
+          variants={stagger}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.div className="mb-6" variants={fadeInUp}>
             <span className="inline-block px-4 py-2 bg-secondary/50 border border-border rounded-full text-sm font-medium text-primary mb-4">
               <Code className="inline w-4 h-4 mr-2" />
               Available for Freelance
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6" data-testid="hero-title">
+          <motion.h1
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
+            data-testid="hero-title"
+            variants={fadeInUp}
+          >
             <span className="text-foreground">Hi, I'm </span>
             <span className="gradient-text">{personal.name}</span>
-          </h1>
+          </motion.h1>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-muted-foreground mb-8" data-testid="hero-subtitle">
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-muted-foreground mb-8"
+            data-testid="hero-subtitle"
+            variants={fadeInUp}
+          >
             {personal.title}
-          </h2>
+          </motion.h2>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="hero-description">
+          <motion.p
+            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
+            data-testid="hero-description"
+            variants={fadeInUp}
+          >
             {personal.summary}
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+          <motion.div className="flex flex-wrap items-center justify-center gap-4 mb-12" variants={fadeInUp}>
             <Button
               onClick={handleContactClick}
               className="inline-flex items-center px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 shadow-lg"
@@ -71,9 +104,12 @@ export default function HeroSection() {
               <Folder className="w-5 h-5 mr-2" />
               View Projects
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center justify-center gap-6 text-muted-foreground">
+          <motion.div
+            className="flex items-center justify-center gap-6 text-muted-foreground"
+            variants={fadeInUp}
+          >
             <a
               href={personal.github}
               target="_blank"
@@ -103,19 +139,54 @@ export default function HeroSection() {
             >
               <Mail className="w-8 h-8" />
             </a>
-          </div>
-        </div>
+            {personal.playStore && (
+              <a
+                href={personal.playStore}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors duration-200"
+                data-testid="link-playstore"
+                title="Play Store"
+              >
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+                </svg>
+              </a>
+            )}
+            {personal.appStore && (
+              <a
+                href={personal.appStore}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors duration-200"
+                data-testid="link-appstore"
+                title="App Store"
+              >
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+              </a>
+            )}
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <button
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+      >
+        <motion.button
           onClick={handleScrollDown}
           className="text-primary"
           data-testid="button-scroll-down"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <ChevronDown size={32} />
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     </section>
   );
 }
