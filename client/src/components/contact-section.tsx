@@ -76,7 +76,7 @@ export default function ContactSection() {
           </div>
 
           <div className="contact-footer-copy">
-            <p className="text-muted-foreground">You can also reach me at my secondary phone number</p>
+            <p className="text-muted-foreground">You can also reach me directly at</p>
             <a
               href={`tel:${personal.phones[1]}`}
               className="contact-alt-link"

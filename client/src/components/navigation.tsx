@@ -67,7 +67,7 @@ export default function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className={`section-shell section-shell--nav ${scrolled ? "section-shell--nav-scrolled" : ""}`}>
+        <div className={`section-shell section-shell--nav ${scrolled ? "section-shell--nav-scrolled" : ""} hidden md:block`}>
           <div
             className={`premium-nav nav-frame ${
               scrolled ? "nav-scrolled" : ""
@@ -90,17 +90,18 @@ export default function Navigation() {
               </div>
 
             </div>
-
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="nav-mobile-toggle"
-                data-testid="mobile-menu-button"
-              >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
           </div>
+        </div>
+
+        <div className="nav-mobile-trigger md:hidden">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="nav-mobile-toggle"
+            data-testid="mobile-menu-button"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </motion.nav>
 

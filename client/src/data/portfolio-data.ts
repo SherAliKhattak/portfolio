@@ -66,7 +66,7 @@ export const portfolioData = {
     title: "Full Stack Mobile Developer | AI & Security Enthusiast",
     location: "",
     email: "skhattak30@gmail.com",
-    phones: ["+92 370 3472420", "+92 332 5342357"],
+    phones: ["+923325342357", "+923325342357"],
     github: "https://github.com/SherAliKhattak",
     linkedin: "https://www.linkedin.com/in/sher-ali-khattak-464685207/",
     playStore: "https://play.google.com/store/apps/developer?id=Sher+Ali+Khattak",
