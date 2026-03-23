@@ -30,9 +30,9 @@ export default function AboutSection() {
   const currentRole = experience[0];
   const latestEducation = education[0];
   const conciseSummary =
-    "Software Engineer with 7+ years of experience focused on polished Flutter and React Native products, AI-assisted development, security-minded engineering, and dependable releases across iOS and Android.";
+    "Software Engineer with 4+ years of experience focused on polished Flutter and React Native products, AI-assisted development, security-minded engineering, and dependable releases across iOS and Android.";
   const aboutHighlights = [
-    "7+ years of software engineering experience",
+    "4+ years of software engineering experience",
     "10+ shipped apps across multiple industries",
     "AI, QA, and security-minded product delivery",
   ];

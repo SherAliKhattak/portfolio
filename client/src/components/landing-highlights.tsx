@@ -12,10 +12,9 @@ const reveal = {
 };
 
 export default function LandingHighlights() {
-  const { experience, projects } = portfolioData;
-  const { briefcase: BriefcaseIcon, external: ExternalIcon, magic: MagicIcon, star: StarIcon } = portfolioUiIcons;
+  const { experience } = portfolioData;
+  const { briefcase: BriefcaseIcon, magic: MagicIcon, star: StarIcon } = portfolioUiIcons;
   const featuredExperience = experience[0];
-  const featuredProject = projects[projects.length - 1];
 
   return (
     <section className="relative -mt-16 pb-12 sm:pb-16">
@@ -80,13 +79,6 @@ export default function LandingHighlights() {
             <div className="hero-highlight-actions flex flex-wrap items-center gap-3">
               <span className="tech-pill">Leadership</span>
               <span className="tech-pill">Cross-platform delivery</span>
-              <a
-                href="#projects"
-                className="hero-highlight-link inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
-              >
-                Featured app: {featuredProject.title}
-                <ExternalIcon className="w-4 h-4" />
-              </a>
             </div>
 
             <div className="hero-highlight-note mt-6 flex items-center gap-3 text-sm text-muted-foreground">

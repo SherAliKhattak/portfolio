@@ -29,7 +29,7 @@ export default function HeroSection() {
   const microSummary =
     "Passionate mobile developer and problem solver, dedicated to crafting polished digital products with modern engineering and thoughtful UX.";
   const stats = [
-    { value: "7+", label: "Years experience" },
+    { value: "4+", label: "Years experience" },
     { value: `${projects.length}+`, label: "Projects shipped" },
     { value: "Remote", label: "Available worldwide" },
   ];
