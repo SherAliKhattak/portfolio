@@ -1,0 +1,153 @@
+import type { IconType } from "react-icons";
+import {
+  FaApple,
+  FaArrowRight,
+  FaBriefcase,
+  FaBug,
+  FaCalendarAlt,
+  FaCamera,
+  FaCar,
+  FaChevronDown,
+  FaChevronRight,
+  FaEnvelope,
+  FaExternalLinkAlt,
+  FaFolderOpen,
+  FaGithub,
+  FaGlobe,
+  FaGraduationCap,
+  FaHeart,
+  FaHospital,
+  FaLinkedin,
+  FaMagic,
+  FaMapMarkerAlt,
+  FaPalette,
+  FaPhone,
+  FaQuoteLeft,
+  FaShieldAlt,
+  FaShoppingBag,
+  FaSitemap,
+  FaStar,
+  FaStethoscope,
+  FaSun,
+  FaTrophy,
+  FaTruck,
+  FaUtensils,
+  FaWallet,
+} from "react-icons/fa";
+import {
+  SiDart,
+  SiFigma,
+  SiFirebase,
+  SiFlutter,
+  SiGit,
+  SiGithubactions,
+  SiGooglecloud,
+  SiGoogleplay,
+  SiGo,
+  SiMongodb,
+  SiPostman,
+  SiReact,
+  SiRedux,
+  SiStripe,
+  SiSupabase,
+  SiXcode,
+} from "react-icons/si";
+
+export const portfolioUiIcons = {
+  appStore: FaApple,
+  arrowRight: FaArrowRight,
+  briefcase: FaBriefcase,
+  calendar: FaCalendarAlt,
+  camera: FaCamera,
+  chevronDown: FaChevronDown,
+  chevronRight: FaChevronRight,
+  email: FaEnvelope,
+  external: FaExternalLinkAlt,
+  folder: FaFolderOpen,
+  github: FaGithub,
+  globe: FaGlobe,
+  graduation: FaGraduationCap,
+  heart: FaHeart,
+  linkedin: FaLinkedin,
+  magic: FaMagic,
+  mapPin: FaMapMarkerAlt,
+  phone: FaPhone,
+  playStore: SiGoogleplay,
+  quote: FaQuoteLeft,
+  shield: FaShieldAlt,
+  star: FaStar,
+} satisfies Record<string, IconType>;
+
+export const projectIconMap: Record<string, IconType> = {
+  Ambulance: FaTruck,
+  Camera: FaCamera,
+  Car: FaCar,
+  CarFront: FaCar,
+  FileText: FaGlobe,
+  Heart: FaHeart,
+  Hospital: FaHospital,
+  ShoppingBag: FaShoppingBag,
+  Stethoscope: FaStethoscope,
+  Sun: FaSun,
+  Truck: FaTruck,
+  Trophy: FaTrophy,
+  Utensils: FaUtensils,
+  Video: FaGlobe,
+};
+
+export type SkillPreviewIcon = {
+  icon: IconType;
+  className: string;
+};
+
+export const skillCategoryIconGroups: Record<string, SkillPreviewIcon[]> = {
+  "Architecture & Patterns": [
+    { icon: FaSitemap, className: "skill-flat-icon skill-flat-icon--ink" },
+    { icon: SiFlutter, className: "skill-flat-icon skill-flat-icon--flutter" },
+    { icon: SiReact, className: "skill-flat-icon skill-flat-icon--react" },
+  ],
+  "Backend & Database": [
+    { icon: SiFirebase, className: "skill-flat-icon skill-flat-icon--firebase" },
+    { icon: SiSupabase, className: "skill-flat-icon skill-flat-icon--supabase" },
+    { icon: SiMongodb, className: "skill-flat-icon skill-flat-icon--mongodb" },
+  ],
+  "Cloud Services": [
+    { icon: SiGooglecloud, className: "skill-flat-icon skill-flat-icon--gcloud" },
+    { icon: SiFirebase, className: "skill-flat-icon skill-flat-icon--firebase" },
+  ],
+  "Deployment": [
+    { icon: SiGoogleplay, className: "skill-flat-icon skill-flat-icon--playstore" },
+    { icon: FaApple, className: "skill-flat-icon skill-flat-icon--ink" },
+    { icon: SiGithubactions, className: "skill-flat-icon skill-flat-icon--actions" },
+  ],
+  "Development Tools": [
+    { icon: SiPostman, className: "skill-flat-icon skill-flat-icon--postman" },
+    { icon: SiXcode, className: "skill-flat-icon skill-flat-icon--xcode" },
+    { icon: SiGit, className: "skill-flat-icon skill-flat-icon--git" },
+  ],
+  "Payments & Storage": [
+    { icon: SiStripe, className: "skill-flat-icon skill-flat-icon--stripe" },
+    { icon: FaWallet, className: "skill-flat-icon skill-flat-icon--accent" },
+    { icon: SiFirebase, className: "skill-flat-icon skill-flat-icon--firebase" },
+  ],
+  "Programming": [
+    { icon: SiDart, className: "skill-flat-icon skill-flat-icon--dart" },
+    { icon: SiReact, className: "skill-flat-icon skill-flat-icon--react" },
+    { icon: SiGo, className: "skill-flat-icon skill-flat-icon--go" },
+  ],
+  "Quality & Security": [
+    { icon: FaShieldAlt, className: "skill-flat-icon skill-flat-icon--accent" },
+    { icon: FaBug, className: "skill-flat-icon skill-flat-icon--bug" },
+    { icon: SiPostman, className: "skill-flat-icon skill-flat-icon--postman" },
+  ],
+  "State Management": [
+    { icon: SiRedux, className: "skill-flat-icon skill-flat-icon--redux" },
+    { icon: SiFlutter, className: "skill-flat-icon skill-flat-icon--flutter" },
+    { icon: SiReact, className: "skill-flat-icon skill-flat-icon--react" },
+  ],
+  "UI/UX": [
+    { icon: SiFigma, className: "skill-flat-icon skill-flat-icon--figma" },
+    { icon: FaPalette, className: "skill-flat-icon skill-flat-icon--palette" },
+    { icon: SiReact, className: "skill-flat-icon skill-flat-icon--react" },
+  ],
+};

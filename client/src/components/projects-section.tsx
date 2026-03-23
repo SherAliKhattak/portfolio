@@ -1,64 +1,39 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { 
-  FileText, 
-  Utensils, 
-  Hospital, 
-  Car, 
-  Video, 
-  CarFront, 
-  Ambulance, 
-  Heart, 
-  Truck, 
-  Stethoscope, 
-  ShoppingBag,
-  ArrowRight,
-  ExternalLink,
-  Sun,
-  Trophy,
-  Camera
-} from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection } from "./animated-section";
-
-const projectIcons: Record<string, any> = {
-  FileText,
-  Utensils,
-  Hospital,
-  Car,
-  Video,
-  CarFront,
-  Ambulance,
-  Heart,
-  Truck,
-  Stethoscope,
-  ShoppingBag,
-  Sun,
-  Trophy,
-  Camera
-};
+import { portfolioUiIcons, projectIconMap } from "./portfolio-icons";
+import sectionBackgroundAlt1 from "@/assets/section-background-alt-1.png";
 
 export default function ProjectsSection() {
   const { projects } = portfolioData;
+  const { arrowRight: ArrowRightIcon, globe: DefaultProjectIcon } = portfolioUiIcons;
 
   return (
-    <section id="projects" className="py-20 bg-secondary/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" data-section-number="04" className="content-section bg-secondary/30">
+      <div className="projects-background-cover" aria-hidden="true">
+        <img
+          src={sectionBackgroundAlt1}
+          alt=""
+          className="projects-background-image"
+        />
+      </div>
+      <div className="section-shell">
         <AnimatedSection>
-          <div className="text-center mb-16">
+          <div className="section-header mb-16">
+            <p className="section-kicker mb-3">Selected products</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
               <span className="gradient-text">Featured Projects</span>
             </h2>
-            <div className="section-title-underline" />
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              A collection of mobile applications I've developed, ranging from healthcare solutions to e-commerce platforms
+              A collection of products I've developed, ranging from mobile applications and AI-assisted community platforms to healthcare and e-commerce solutions
             </p>
           </div>
         </AnimatedSection>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.05 }}
@@ -68,7 +43,7 @@ export default function ProjectsSection() {
           }}
         >
           {projects.map((project, index) => {
-            const IconComponent = projectIcons[project.icon] || FileText;
+            const IconComponent = projectIconMap[project.icon] || DefaultProjectIcon;
             
             return (
               <motion.div
@@ -80,12 +55,12 @@ export default function ProjectsSection() {
               >
               <Link href={`/project/${index}`}>
                 <Card
-                  className="project-card rounded-lg overflow-hidden cursor-pointer"
+                  className="project-card project-card--premium rounded-lg overflow-hidden cursor-pointer"
                   data-testid={`project-card-${index}`}
                 >
                   <CardContent className="p-6">
                     {(project.image || project.gallery?.[0]) && (
-                      <div className="mb-4 rounded-lg overflow-hidden aspect-video relative">
+                      <div className="project-media mb-5 rounded-[24px] overflow-hidden aspect-video relative border border-white/8">
                         <img 
                           src={project.image || project.gallery?.[0]} 
                           alt={project.title}
@@ -95,7 +70,9 @@ export default function ProjectsSection() {
                       </div>
                     )}
                     <div className="flex items-center justify-between mb-4">
-                      <IconComponent className="text-primary text-3xl" />
+                      <div className="icon-chip">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
                       <div className="flex items-center gap-2">
                         {project.status && (
                           <span className="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full" data-testid={`project-status-${index}`}>
@@ -107,27 +84,27 @@ export default function ProjectsSection() {
                     <h3 className="text-xl font-bold mb-3" data-testid={`project-title-${index}`}>
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed line-clamp-2" data-testid={`project-description-${index}`}>
+                    <p className="project-description mb-4 text-sm leading-relaxed line-clamp-2" data-testid={`project-description-${index}`}>
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.slice(0, 3).map((tech, techIndex) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 bg-primary/10 text-primary text-xs rounded"
+                          className="project-tech-chip"
                           data-testid={`project-tech-${index}-${techIndex}`}
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                        <span className="project-tech-chip">
                           +{project.technologies.length - 3}
                         </span>
                       )}
                     </div>
-                    <div className="inline-flex items-center text-primary hover:text-accent transition-colors">
-                      View Details <ArrowRight className="ml-2 w-4 h-4" />
+                    <div className="project-link">
+                      View Details <ArrowRightIcon className="ml-2 w-4 h-4" />
                     </div>
                   </CardContent>
                 </Card>

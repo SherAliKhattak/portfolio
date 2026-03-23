@@ -1,21 +1,30 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin, ChevronRight } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection } from "./animated-section";
+import { portfolioUiIcons } from "./portfolio-icons";
+import experienceBackgroundCover from "@/assets/experience-background-cover.png";
 
 export default function ExperienceSection() {
   const { experience } = portfolioData;
+  const { calendar: CalendarIcon, chevronRight: ChevronRightIcon, mapPin: MapPinIcon } = portfolioUiIcons;
 
   return (
-    <section id="experience" className="py-20 bg-secondary/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" data-section-number="02" className="content-section bg-secondary/30">
+      <div className="experience-background-cover" aria-hidden="true">
+        <img
+          src={experienceBackgroundCover}
+          alt=""
+          className="experience-background-image"
+        />
+      </div>
+      <div className="section-shell">
         <AnimatedSection>
-          <div className="text-center mb-16">
+          <div className="section-header mb-16">
+            <p className="section-kicker mb-3">Career path</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
               <span className="gradient-text">Work Experience</span>
             </h2>
-            <div className="section-title-underline" />
           </div>
         </AnimatedSection>
 
@@ -30,30 +39,37 @@ export default function ExperienceSection() {
               className="relative border-l-2 border-border pl-8 pb-12 timeline-item"
               data-testid={`experience-item-${index}`}
             >
-              <Card className="bg-card border-border hover:border-primary transition-all duration-300">
+              <Card className="premium-panel experience-card">
                 <CardContent className="p-6">
-                  <div className="flex flex-wrap items-center justify-between mb-4">
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-5">
                     <div>
+                      <p className="section-kicker mb-3">Role {String(index + 1).padStart(2, "0")}</p>
                       <h3 className="text-2xl font-bold text-foreground" data-testid={`experience-position-${index}`}>
                         {exp.position}
                       </h3>
-                      <p className="text-primary font-semibold" data-testid={`experience-company-${index}`}>
+                      <p className="experience-company" data-testid={`experience-company-${index}`}>
                         {exp.company}
                       </p>
                     </div>
-                    <span className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mt-2 sm:mt-0">
-                      <Calendar className="w-4 h-4 mr-2" />
+                    <span className="experience-period-chip">
+                      <CalendarIcon className="w-4 h-4 mr-2" />
                       {exp.period}
                     </span>
                   </div>
-                  <div className="text-muted-foreground mb-2" data-testid={`experience-location-${index}`}>
-                    <MapPin className="inline w-4 h-4 mr-2 text-primary" />
-                    {exp.location}
-                  </div>
-                  <ul className="space-y-3 text-muted-foreground">
+
+                  {exp.location ? (
+                    <div className="experience-location" data-testid={`experience-location-${index}`}>
+                      <MapPinIcon className="w-4 h-4 text-primary" />
+                      <span>{exp.location}</span>
+                    </div>
+                  ) : null}
+
+                  <ul className="experience-list">
                     {exp.responsibilities.map((responsibility, respIndex) => (
-                      <li key={respIndex} className="flex items-start" data-testid={`experience-responsibility-${index}-${respIndex}`}>
-                        <ChevronRight className="text-primary mr-3 mt-1 flex-shrink-0 w-4 h-4" />
+                      <li key={respIndex} className="experience-list-item" data-testid={`experience-responsibility-${index}-${respIndex}`}>
+                        <span className="experience-bullet">
+                          <ChevronRightIcon className="w-4 h-4" />
+                        </span>
                         <span>{responsibility}</span>
                       </li>
                     ))}

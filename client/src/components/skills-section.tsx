@@ -1,48 +1,34 @@
 import { motion } from "framer-motion";
-import { 
-  Layers, 
-  Database, 
-  Cloud, 
-  GitBranch, 
-  Wrench, 
-  ShoppingCart, 
-  Palette, 
-  Rocket, 
-  Code 
-} from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection } from "./animated-section";
-
-const skillIcons: Record<string, any> = {
-  "State Management": Layers,
-  "Backend & Database": Database,
-  "Cloud Services": Cloud,
-  "Architecture & Patterns": GitBranch,
-  "Development Tools": Wrench,
-  "Payments & Storage": ShoppingCart,
-  "UI/UX": Palette,
-  "Deployment": Rocket,
-  "Programming": Code,
-};
+import { skillCategoryIconGroups } from "./portfolio-icons";
+import skillsBackgroundCover from "@/assets/skills-background-cover.png";
 
 export default function SkillsSection() {
   const { skills } = portfolioData;
 
   return (
-    <section id="skills" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" data-section-number="03" className="content-section bg-background">
+      <div className="skills-background-cover" aria-hidden="true">
+        <img
+          src={skillsBackgroundCover}
+          alt=""
+          className="skills-background-image"
+        />
+      </div>
+      <div className="section-shell">
         <AnimatedSection>
-          <div className="text-center mb-16">
+          <div className="section-header mb-16">
+            <p className="section-kicker mb-3">Capabilities</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
               <span className="gradient-text">Technical Skills</span>
             </h2>
-            <div className="section-title-underline" />
           </div>
         </AnimatedSection>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="skills-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
@@ -52,8 +38,8 @@ export default function SkillsSection() {
           }}
         >
           {Object.entries(skills).map(([category, skillList], index) => {
-            const IconComponent = skillIcons[category] || Code;
-            
+            const previewIcons = skillCategoryIconGroups[category] || skillCategoryIconGroups["Programming"];
+
             return (
               <motion.div
                 key={category}
@@ -63,13 +49,19 @@ export default function SkillsSection() {
                 }}
               >
               <Card
-                className="bg-card border-border hover:border-primary transition-all duration-300"
+                className="skill-category-card"
                 data-testid={`skill-category-${index}`}
               >
                 <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <IconComponent className="text-primary text-2xl mr-3" />
-                    <h3 className="text-xl font-bold" data-testid={`skill-category-title-${index}`}>
+                  <div className="skill-icon-row mb-5">
+                    {previewIcons.map(({ icon: PreviewIcon, className }, previewIndex) => (
+                      <div key={`${category}-${previewIndex}`} className="skill-icon-badge">
+                        <PreviewIcon className={className} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mb-4">
+                    <h3 className="skill-category-title" data-testid={`skill-category-title-${index}`}>
                       {category}
                     </h3>
                   </div>

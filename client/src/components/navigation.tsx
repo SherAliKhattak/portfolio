@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -8,6 +8,7 @@ const navLinks = [
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#testimonials", label: "Testimonials" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -61,44 +62,39 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-shadow duration-300 ${
-          scrolled ? "nav-scrolled" : ""
-        }`}
+        className="fixed top-0 left-0 right-0 z-50"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0">
-              <span className="text-xl font-bold gradient-text" data-testid="logo">SAK</span>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
+        <div className={`section-shell section-shell--nav ${scrolled ? "section-shell--nav-scrolled" : ""}`}>
+          <div
+            className={`premium-nav nav-frame ${
+              scrolled ? "nav-scrolled" : ""
+            }`}
+          >
+            <div className="hidden md:flex nav-desktop-layout">
+              <div className="nav-links-row">
                 {navLinks.map((link) => (
                   <button
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`transition-colors duration-200 ${
-                      activeSection === link.href.substring(1)
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
+                    className={`nav-link ${
+                      activeSection === link.href.substring(1) ? "nav-link--active" : ""
                     }`}
                     data-testid={`nav-${link.label.toLowerCase()}`}
                   >
-                    {link.label}
+                    <span className="nav-link-label">{link.label}</span>
                   </button>
                 ))}
               </div>
+
             </div>
 
-            {/* Mobile menu button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-foreground hover:text-primary focus:outline-none"
+                className="nav-mobile-toggle"
                 data-testid="mobile-menu-button"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,44 +104,74 @@ export default function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-64 bg-card border-l border-border z-[60] md:hidden transition-transform duration-300 ease-in-out ${
-          isMobileMenuOpen ? "transform translate-x-0" : "transform translate-x-full"
-        }`}
-        data-testid="mobile-menu"
-      >
-        <div className="p-6">
-          <button
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-foreground hover:text-primary mb-8"
-            data-testid="close-menu"
-          >
-            <X size={24} />
-          </button>
-          <nav className="flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-foreground hover:text-primary transition-colors duration-200 text-lg text-left"
-                data-testid={`mobile-nav-${link.label.toLowerCase()}`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
+      <AnimatePresence>
+        {isMobileMenuOpen ? (
+          <>
+            <motion.div
+              className="nav-mobile-overlay fixed inset-0 z-[55] md:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+              data-testid="mobile-menu-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22 }}
+            />
 
-      {/* Mobile menu overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-[55] md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-          data-testid="mobile-menu-overlay"
-        />
-      )}
+            <motion.div
+              className="fixed top-0 right-0 bottom-0 premium-mobile-menu z-[60] md:hidden"
+              data-testid="mobile-menu"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="p-5">
+                <div className="nav-mobile-header">
+                  <div>
+                    <p className="nav-mobile-kicker">Navigation</p>
+                    <p className="nav-mobile-title">Explore portfolio</p>
+                  </div>
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-mobile-close"
+                    data-testid="close-menu"
+                  >
+                    <X size={22} />
+                  </button>
+                </div>
+
+                <nav className="nav-mobile-links-list">
+                  {navLinks.map((link, index) => (
+                    <motion.button
+                      key={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className={`nav-mobile-link ${
+                        activeSection === link.href.substring(1) ? "nav-mobile-link--active" : ""
+                      }`}
+                      data-testid={`mobile-nav-${link.label.toLowerCase()}`}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ delay: index * 0.03 }}
+                    >
+                      <span className="nav-mobile-link-index">{String(index + 1).padStart(2, "0")}</span>
+                      <span>{link.label}</span>
+                    </motion.button>
+                  ))}
+                </nav>
+
+                <button
+                  onClick={() => handleNavClick("#contact")}
+                  className="nav-cta mt-6 w-full justify-center"
+                  data-testid="mobile-nav-contact-cta"
+                >
+                  Start a Project
+                </button>
+              </div>
+            </motion.div>
+          </>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }
