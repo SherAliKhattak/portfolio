@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolio-data";
 import { Button } from "@/components/ui/button";
 import heroBackgroundCover from "@/assets/hero-background-cover.png";
-import resumePdf from "@/assets/sher-ali-khattak-resume.pdf";
+import resumePdf from "@/assets/SherAliKhattakCV (1).pdf";
 import { portfolioUiIcons } from "./portfolio-icons";
 
 const fadeInUp = {
@@ -123,7 +123,7 @@ export default function HeroSection() {
                   </Button>
                   <a
                     href={resumePdf}
-                    download="SherAli-Khattak-Resume.pdf"
+                    download="SherAliKhattakCV.pdf"
                     className="hero-secondary-btn"
                     data-testid="button-download-resume"
                   >
