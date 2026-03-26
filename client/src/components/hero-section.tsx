@@ -21,17 +21,12 @@ const stagger = {
 };
 
 export default function HeroSection() {
-  const { personal, projects } = portfolioData;
-  const { chevronDown: ChevronDownIcon, email: EmailIcon, external: ExternalIcon, folder: FolderIcon, github: GithubIcon, linkedin: LinkedinIcon, phone: PhoneIcon } = portfolioUiIcons;
-  const headlineLines = ["Mobile App", "Developer"];
-  const intro =
-    "I build polished cross-platform mobile products with clean architecture, thoughtful UX, and production-ready execution for iOS and Android.";
-  const microSummary =
-    "Passionate mobile developer and problem solver, dedicated to crafting polished digital products with modern engineering and thoughtful UX.";
+  const { personal } = portfolioData;
+  const { chevronDown: ChevronDownIcon, external: ExternalIcon, folder: FolderIcon, phone: PhoneIcon } = portfolioUiIcons;
   const stats = [
     { value: "4+", label: "Years experience" },
-    { value: `${projects.length}+`, label: "Projects shipped" },
-    { value: "Remote", label: "Available worldwide" },
+    { value: "20+", label: "Projects shipped" },
+    { value: "iOS + Android", label: "Production-ready app delivery" },
   ];
 
   const handleContactClick = () => {
@@ -78,25 +73,26 @@ export default function HeroSection() {
           animate="animate"
         >
           <motion.div variants={fadeInUp} className="hero-reference-bar">
-            <span className="hero-micro-label">Code by {personal.name.split(" ")[0]}</span>
-            <p className="hero-micro-summary">{microSummary}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="eyebrow-chip">Available for opportunities</span>
+              <span className="hero-micro-label">Software Engineer Portfolio</span>
+            </div>
+            <p className="hero-micro-summary">Cross-platform products, clean architecture, and AI-assisted delivery.</p>
           </motion.div>
 
           <div className="hero-grid hero-grid--reference">
             <motion.div variants={fadeInUp} className="hero-copy-column hero-copy-column--reference">
               <div className="space-y-6">
+                <p className="hero-kicker">Hi, I&apos;m {personal.name}</p>
                 <div className="reference-name-wrap" data-testid="hero-title">
-                  {headlineLines.map((line, index) => (
-                    <h1
-                      key={line}
-                      className={`reference-name-line reference-name-line--hero ${index === 1 ? "reference-name-line--soft" : ""}`}
-                    >
-                      {line}
-                    </h1>
-                  ))}
+                  <h1 className="reference-name-line reference-name-line--hero">
+                    Software Engineer specializing in
+                  </h1>
+                  <h1 className="reference-name-line reference-name-line--hero reference-name-line--soft">
+                    Cross-Platform Development and AI Integration
+                  </h1>
                 </div>
                 <div className="hero-identity-block">
-                  <p className="hero-identity-name">{personal.name}</p>
                   <h2 className="hero-profession-line" data-testid="hero-subtitle">
                     {personal.title}
                   </h2>
@@ -104,25 +100,26 @@ export default function HeroSection() {
               </div>
 
               <div className="hero-intro-panel" data-testid="hero-description">
-                <p className="hero-intro-copy">{intro}</p>
+                <p className="hero-intro-copy">{personal.summary}</p>
+
+                <div className="hero-contact-inline">
+                  <a href={`mailto:${personal.email}`} className="hero-contact-item">
+                    {personal.email}
+                  </a>
+                  <a href={`tel:${personal.phones[0]}`} className="hero-contact-item">
+                    <PhoneIcon className="w-4 h-4" />
+                    {personal.phones[0]}
+                  </a>
+                </div>
 
                 <div className="hero-intro-actions">
                   <Button
-                    onClick={handleContactClick}
-                    className="hero-primary-btn"
-                    data-testid="button-contact"
-                  >
-                    <EmailIcon className="w-5 h-5 mr-2" />
-                    Start a Project
-                  </Button>
-                  <Button
                     onClick={handleProjectsClick}
-                    variant="outline"
-                    className="hero-secondary-btn"
+                    className="hero-primary-btn"
                     data-testid="button-projects"
                   >
-                    <FolderIcon className="w-5 h-5 mr-2" />
-                    View Projects
+                    <FolderIcon className="w-4 h-4 mr-2" />
+                    View My Work
                   </Button>
                   <a
                     href={resumePdf}
@@ -130,9 +127,16 @@ export default function HeroSection() {
                     className="hero-secondary-btn"
                     data-testid="button-download-resume"
                   >
-                    <ExternalIcon className="w-5 h-5 mr-2" />
+                    <ExternalIcon className="w-4 h-4 mr-2" />
                     Download Resume
                   </a>
+                  <button
+                    onClick={handleContactClick}
+                    className="hero-text-link"
+                    data-testid="button-contact"
+                  >
+                    Contact
+                  </button>
                 </div>
 
                 <div className="hero-stats-row">
@@ -144,44 +148,6 @@ export default function HeroSection() {
                   ))}
                 </div>
 
-                <div className="hero-link-row">
-                  <a
-                    href={personal.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-link"
-                    data-testid="link-github"
-                  >
-                    <GithubIcon className="w-4 h-4 flat-social-icon flat-social-icon--github" />
-                    GitHub
-                  </a>
-                  <a
-                    href={personal.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-link"
-                    data-testid="link-linkedin"
-                  >
-                    <LinkedinIcon className="w-4 h-4 flat-social-icon flat-social-icon--linkedin" />
-                    LinkedIn
-                  </a>
-                  <a
-                    href={`mailto:${personal.email}`}
-                    className="hero-link"
-                    data-testid="link-email"
-                  >
-                    <EmailIcon className="w-4 h-4 flat-social-icon flat-social-icon--email" />
-                    Email
-                  </a>
-                  <a
-                    href={`tel:${personal.phones[0]}`}
-                    className="hero-link"
-                    data-testid="link-phone"
-                  >
-                    <PhoneIcon className="w-4 h-4 flat-social-icon flat-social-icon--phone" />
-                    Call
-                  </a>
-                </div>
               </div>
             </motion.div>
           </div>

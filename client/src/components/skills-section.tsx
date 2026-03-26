@@ -19,11 +19,14 @@ export default function SkillsSection() {
       </div>
       <div className="section-shell">
         <AnimatedSection>
-          <div className="section-header mb-16">
+          <div className="section-header section-header--left mb-16">
             <p className="section-kicker mb-3">Capabilities</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
               <span className="gradient-text">Technical Skills</span>
             </h2>
+            <p className="text-muted-foreground mt-4 max-w-3xl">
+              A practical toolkit built around cross-platform development, shipping products, and maintaining quality.
+            </p>
           </div>
         </AnimatedSection>
 
@@ -52,20 +55,20 @@ export default function SkillsSection() {
                 className="skill-category-card"
                 data-testid={`skill-category-${index}`}
               >
-                <CardContent className="p-6">
-                  <div className="skill-icon-row mb-5">
+                <CardContent className="p-6 skill-card-content">
+                  <div className="skill-card-header">
+                    <div className="skill-icon-row">
                     {previewIcons.map(({ icon: PreviewIcon, className }, previewIndex) => (
                       <div key={`${category}-${previewIndex}`} className="skill-icon-badge">
                         <PreviewIcon className={className} />
                       </div>
                     ))}
                   </div>
-                  <div className="mb-4">
                     <h3 className="skill-category-title" data-testid={`skill-category-title-${index}`}>
                       {category}
                     </h3>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="skill-tags-grid">
                     {skillList.map((skill, skillIndex) => (
                       <span
                         key={skill}

@@ -7,7 +7,6 @@ import SkillsSection from "@/components/skills-section";
 import ProjectsSection from "@/components/projects-section";
 import EducationSection from "@/components/education-section";
 import TestimonialsSection from "@/components/testimonials-section";
-import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 
 export default function Portfolio() {
@@ -15,14 +14,13 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <HeroSection />
-      <LandingHighlights />
       <AboutSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <ProjectsSection />
+        <LandingHighlights />
+      <ProjectsSection limit={4} showViewAll />
+        <SkillsSection />
+        <ExperienceSection />
       <EducationSection />
       <TestimonialsSection />
-      <ContactSection />
       <Footer />
     </div>
   );

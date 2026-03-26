@@ -20,16 +20,19 @@ export default function EducationSection() {
       </div>
       <div className="section-shell">
         <AnimatedSection>
-          <div className="section-header mb-16">
+          <div className="section-header section-header--left mb-16">
             <p className="section-kicker mb-3">Learning path</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
               <span className="gradient-text">Education</span>
             </h2>
+            <p className="text-muted-foreground mt-4 max-w-3xl">
+              Academic foundations that shaped my engineering mindset and problem-solving approach.
+            </p>
           </div>
         </AnimatedSection>
 
         <motion.div
-          className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8"
+          className="education-grid max-w-5xl mx-auto grid md:grid-cols-2 gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
@@ -40,6 +43,7 @@ export default function EducationSection() {
         >
           {education.map((edu, index) => (
             <motion.div
+              className="education-grid-item"
               key={index}
               variants={{
                 hidden: { opacity: 0, y: 24 },
@@ -51,13 +55,13 @@ export default function EducationSection() {
               className="education-card"
               data-testid={`education-card-${index}`}
             >
-              <CardContent className="p-8">
-                <div className="flex items-center mb-5">
-                  <div className="education-icon-wrap mr-4">
+              <CardContent className="p-8 education-card-content">
+                <div className="education-card-header">
+                  <div className="education-icon-wrap">
                     <GraduationIcon className="text-primary text-2xl" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold" data-testid={`education-degree-${index}`}>
+                  <div className="education-heading">
+                    <h3 className="education-degree" data-testid={`education-degree-${index}`}>
                       {edu.degree}
                     </h3>
                     <p className="education-field" data-testid={`education-field-${index}`}>
@@ -66,16 +70,16 @@ export default function EducationSection() {
                   </div>
                 </div>
 
-                <div className="education-meta-row mb-3" data-testid={`education-institution-${index}`}>
+                <div className="education-meta-row" data-testid={`education-institution-${index}`}>
                   <GraduationIcon className="w-5 h-5 text-primary" />
                   <span>{edu.institution}</span>
                 </div>
 
-                <div className="education-meta-row mb-4" data-testid={`education-period-${index}`}>
+                <div className="education-period-chip" data-testid={`education-period-${index}`}>
                   <CalendarIcon className="w-5 h-5 text-primary" />
                   <span>{edu.period}</span>
                 </div>
-                <p className="education-description text-sm leading-relaxed" data-testid={`education-description-${index}`}>
+                <p className="education-description" data-testid={`education-description-${index}`}>
                   {edu.description}
                 </p>
               </CardContent>

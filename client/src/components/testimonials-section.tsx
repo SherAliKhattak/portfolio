@@ -20,11 +20,14 @@ export default function TestimonialsSection() {
       </div>
       <div className="section-shell">
         <AnimatedSection>
-          <div className="section-header mb-16">
+          <div className="section-header section-header--left mb-16">
             <p className="section-kicker mb-3">Social proof</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
               <span className="gradient-text">What Clients Say</span>
             </h2>
+            <p className="text-muted-foreground mt-4 max-w-3xl">
+              Feedback from clients who trusted me with product design, implementation, and delivery.
+            </p>
           </div>
         </AnimatedSection>
 
@@ -47,7 +50,7 @@ export default function TestimonialsSection() {
               }}
             >
               <Card className="premium-panel testimonial-card" data-testid={`testimonial-card-${index}`}>
-                <CardContent className="p-7 sm:p-8">
+                <CardContent className="p-7 sm:p-8 testimonial-card-content">
                   <div className="testimonial-topline">
                     <div className="testimonial-quote-icon">
                       <QuoteIcon className="w-5 h-5" />

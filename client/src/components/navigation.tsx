@@ -9,13 +9,18 @@ const navLinks = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#testimonials", label: "Testimonials" },
-  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+
+  const getNavOffset = () => {
+    const navElement = document.querySelector("nav");
+    const navHeight = navElement?.getBoundingClientRect().height ?? 0;
+    return Math.ceil(navHeight + 20);
+  };
 
   useEffect(() => {
     const handleScrollNav = () => setScrolled(window.scrollY > 20);
@@ -26,7 +31,7 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section[id]");
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + getNavOffset();
 
       sections.forEach((section) => {
         const htmlSection = section as HTMLElement;
@@ -50,7 +55,8 @@ export default function Navigation() {
     const targetSection = document.getElementById(targetId);
     
     if (targetSection) {
-      const offsetTop = targetSection.offsetTop - 80;
+      const offsetTop =
+        targetSection.getBoundingClientRect().top + window.scrollY - getNavOffset();
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
@@ -160,14 +166,6 @@ export default function Navigation() {
                     </motion.button>
                   ))}
                 </nav>
-
-                <button
-                  onClick={() => handleNavClick("#contact")}
-                  className="nav-cta mt-6 w-full justify-center"
-                  data-testid="mobile-nav-contact-cta"
-                >
-                  Start a Project
-                </button>
               </div>
             </motion.div>
           </>

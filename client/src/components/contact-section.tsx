@@ -33,7 +33,7 @@ export default function ContactSection() {
               <span className="contact-heading-line contact-heading-line--accent">Touch</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              I'm currently available for freelance work and exciting opportunities. Let's work together to create something amazing!
+              I&apos;m open to product collaborations, consulting work, and strong engineering opportunities. Let&apos;s build something meaningful together.
             </p>
           </div>
         </AnimatedSection>

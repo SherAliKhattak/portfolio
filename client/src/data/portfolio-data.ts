@@ -170,6 +170,24 @@ export const portfolioData = {
 
   projects: [
     {
+      title: "PopDarts Score Keeper",
+      description: "Take your Popdarts game to the next level with the official Popdarts Scorekeeper app. Effortlessly track scores for multiple players, stay connected with the Popdarts community for updates and challenges, and use the Stat Track feature to log trick shots. Perfect for game nights, tournaments, and practice.",
+      technologies: ["Flutter", "Score Tracking", "Sports UI", "Firebase", "WebSockets"],
+      icon: "Trophy",
+      gallery: [popdarts1, popdarts2, popdarts3, popdarts4, popdarts5, popdarts6, popdarts7, popdarts8],
+      playStore: "https://play.google.com/store/apps/details?id=com.firebase.popdarts&hl=en"
+    },
+    {
+      title: "Fit Freak",
+      description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
+      technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],
+      icon: "Heart",
+      image: fitfreak1,
+      gallery: [fitfreak1, fitfreak2, fitfreak3, fitfreak4, fitfreak5, fitfreak6, fitfreak7, fitfreak8, fitfreak9, fitfreak10],
+      playStore: "https://play.google.com/store/apps/details?id=com.duseca.fitfreak",
+      appStore: "https://apps.apple.com/us/app/fit-freak-pro/id6742347988"
+    },
+    {
       title: "Chief AI Officers Club",
       description: "A community website and member-to-member chatting platform developed in Lovable using an AI-first workflow and prompt engineering for business leaders. Includes a public marketing website, member directory, admin dashboard, announcements, messaging flows, and member management experiences designed for an exclusive executive network.",
       technologies: ["Lovable", "AI-First", "Prompt Engineering", "Web Platform", "Community App", "Messaging"],
@@ -181,6 +199,14 @@ export const portfolioData = {
       gallery: [caioClub1, caioClub2, caioClub3, caioClub4, caioClub5, caioClub6],
       link: "https://www.global-masters.org/",
       linkType: "Website"
+    },
+    {
+      title: "FastWheel: Buy & Sell Cars",
+      description: "A leading marketplace to buy and sell new or used cars. Search over half a million cars, use advanced filters (make, model, price, mileage), create adverts in minutes, and get instant notifications on saved searches. Features free car valuation, dealer reviews, and finance options.",
+      technologies: ["Flutter", "Firebase", "Marketplace"],
+      icon: "CarFront",
+      gallery: [fastwheel1, fastwheel2, fastwheel3, fastwheel4],
+      playStore: "https://play.google.com/store/apps/details?id=com.wheeldeals.wheelsanddeals"
     },
     {
       title: "OpticalFit",
@@ -216,14 +242,6 @@ export const portfolioData = {
       playStore: "https://play.google.com/store/apps/details?id=techovative.ihealthcure.doctor&hl=en"
     },
     {
-      title: "FastWheel: Buy & Sell Cars",
-      description: "A leading marketplace to buy and sell new or used cars. Search over half a million cars, use advanced filters (make, model, price, mileage), create adverts in minutes, and get instant notifications on saved searches. Features free car valuation, dealer reviews, and finance options.",
-      technologies: ["Flutter", "Firebase", "Marketplace"],
-      icon: "CarFront",
-      gallery: [fastwheel1, fastwheel2, fastwheel3, fastwheel4],
-      playStore: "https://play.google.com/store/apps/details?id=com.wheeldeals.wheelsanddeals"
-    },
-    {
       title: "JJ Deliveries",
       description: "Enhanced delivery reach to 1000+ customers by partnering with 20 local restaurants for doorstep service. Increased customer satisfaction by 50% by enhancing the order process on JJ's Deliveries app.",
       technologies: ["Flutter", "Delivery", "Real-time"],
@@ -240,24 +258,6 @@ export const portfolioData = {
       gallery: [truckkaro1, truckkaro2, truckkaro3],
       link: "https://apps.apple.com/pk/app/truckkaro/id6464123640",
       linkType: "App Store"
-    },
-    {
-      title: "PopDarts Score Keeper",
-      description: "Take your Popdarts game to the next level with the official Popdarts Scorekeeper app. Effortlessly track scores for multiple players, stay connected with the Popdarts community for updates and challenges, and use the Stat Track feature to log trick shots. Perfect for game nights, tournaments, and practice.",
-      technologies: ["Flutter", "Score Tracking", "Sports UI", "Firebase"],
-      icon: "Trophy",
-      gallery: [popdarts1, popdarts2, popdarts3, popdarts4, popdarts5, popdarts6, popdarts7, popdarts8],
-      playStore: "https://play.google.com/store/apps/details?id=com.firebase.popdarts&hl=en"
-    },
-    {
-      title: "Fit Freak",
-      description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
-      technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],
-      icon: "Heart",
-      image: fitfreak1,
-      gallery: [fitfreak1, fitfreak2, fitfreak3, fitfreak4, fitfreak5, fitfreak6, fitfreak7, fitfreak8, fitfreak9, fitfreak10],
-      playStore: "https://play.google.com/store/apps/details?id=com.duseca.fitfreak",
-      appStore: "https://apps.apple.com/us/app/fit-freak-pro/id6742347988"
     }
   ]
 };
