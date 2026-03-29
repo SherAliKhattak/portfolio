@@ -114,7 +114,7 @@ export default function ProjectsSection({
       <div className="section-shell">
         <AnimatedSection>
           <div
-            className={`projects-section-top mb-16 ${
+            className={`projects-section-top mb-10 md:mb-16 ${
               isPortfolioVariant ? "projects-section-top--portfolio" : ""
             }`}
           >

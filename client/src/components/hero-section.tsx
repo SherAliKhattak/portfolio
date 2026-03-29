@@ -53,12 +53,12 @@ export default function HeroSection() {
           animate="animate"
         >
           <motion.div variants={fadeInUp} className="hero-reference-bar hero-reference-bar--dark">
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="hero-reference-bar-row flex flex-wrap items-center">
               <span className="eyebrow-chip eyebrow-chip--dark">Available for opportunities</span>
               <span className="hero-micro-label">Senior App Developer Portfolio</span>
             </div>
             <p className="hero-micro-summary">
-              Cross-platform apps, clean architecture, AI-assisted delivery, and reliable product execution.
+              Cross-platform apps, clean architecture, and reliable product execution.
             </p>
           </motion.div>
 

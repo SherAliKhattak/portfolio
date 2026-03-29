@@ -71,10 +71,10 @@ export const portfolioData = {
     linkedin: "https://www.linkedin.com/in/sher-ali-khattak-464685207/",
     playStore: "https://play.google.com/store/apps/developer?id=Sher+Ali+Khattak",
     appStore: "https://apps.apple.com/us/search?term=Sher%20Ali%20Khattak&entity=software",
-    summary: "Software Engineer with 4+ years of experience building mobile and full-stack products with Flutter and React Native. Experienced in end-to-end development of CRM systems, HRMS platforms, E-commerce applications, IoT and BLE integrations, Desktop Applications, Web Applications, and Food Delivery platforms. Demonstrated ability to deliver scalable, bug-free, and user-friendly solutions across multiple domains while working closely with quality assurance processes and security-minded testing practices. Proficient in RESTful API integration, database management, AI-assisted development workflows using Claude and Cursor, and modern engineering tools including XCode, Postman, and Burp Suite to ship faster and more reliably.",
+    summary: "Software Engineer with 4+ years of experience building mobile and full-stack products with Flutter and React Native. Experienced in end-to-end development of CRM systems, HRMS platforms, E-commerce applications, IoT and BLE integrations, Desktop Applications, Web Applications, and Food Delivery platforms. Demonstrated ability to deliver scalable, bug-free, and user-friendly solutions across multiple domains while working closely with quality assurance processes and security-minded testing practices. Proficient in RESTful API integration, database management, and modern engineering tools including XCode, Postman, and Burp Suite to ship faster and more reliably.",
     aboutDetails: [
       "With a strong foundation in Computer Systems Engineering and 4+ years of software engineering experience, I specialize in building cross-platform mobile applications using Flutter and React Native. My journey started with curiosity and self-learning, and has grown into a career focused on shipping polished, reliable, and user-centric products.",
-      "I've successfully delivered projects ranging from healthcare solutions to e-commerce platforms, while also using AI tools like Claude and Cursor to speed up development, XCode and Postman for delivery workflows, Burp Suite for security testing, and hands-on quality assurance practices to maintain high product standards."
+      "I've successfully delivered projects ranging from healthcare solutions to e-commerce platforms, using XCode and Postman for delivery workflows, Burp Suite for security testing, and hands-on quality assurance practices to maintain high product standards."
     ]
   },
   
@@ -160,7 +160,7 @@ export const portfolioData = {
     "Backend & Database": ["Firebase", "Supabase", "SQFlite", "REST APIs", "Cloud Firestore", "GoLang", "AWS"],
     "Cloud Services": ["Firebase Storage", "Cloud Messaging", "Push Notifications", "Edge Functions", "AWS Lambda", "S3", "EC2"],
     "Architecture & Patterns": ["MVC", "Repository Pattern", "Clean Architecture"],
-    "Development Tools": ["XCode", "Postman", "Claude", "Cursor", "FFmpeg", "Isolates", "Multithreading", "File Handling"],
+    "Development Tools": ["XCode", "Postman", "FFmpeg", "Isolates", "Multithreading", "File Handling"],
     "Quality & Security": ["Quality Assurance", "QA Testing", "Security Testing", "Burp Suite"],
     "Payments & Storage": ["Stripe Integration", "Shared Preferences", "Local Storage"],
     "UI/UX": ["Responsive Design", "Rive Animations", "Lottie", "Custom UI"],

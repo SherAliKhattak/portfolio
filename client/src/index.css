@@ -7752,7 +7752,7 @@ body:has(.portfolio-reference-page) {
 
 .profile-sidebar-card {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.15rem;
   padding: 1.35rem;
   border-radius: 28px;
   border: 1px solid var(--portfolio-dark-border);
@@ -7760,23 +7760,25 @@ body:has(.portfolio-reference-page) {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 26px 50px rgba(5, 5, 5, 0.24);
+  color: var(--portfolio-dark-text);
+  font-family: inherit;
 }
 
 .profile-sidebar-top {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
   justify-items: center;
-  padding-bottom: 1.15rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 1.05rem;
+  border-bottom: 1px solid var(--portfolio-dark-border);
 }
 
 .profile-sidebar-avatar-wrap {
   position: relative;
   width: min(100%, 10rem);
   aspect-ratio: 1 / 1;
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--portfolio-dark-border);
   background: linear-gradient(180deg, #373737, #262626);
 }
 
@@ -7801,14 +7803,14 @@ body:has(.portfolio-reference-page) {
 
 .profile-sidebar-identity {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.35rem;
   text-align: center;
 }
 
 .profile-sidebar-name {
   color: var(--portfolio-dark-text);
-  font-size: 1.8rem;
-  line-height: 1.04;
+  font-size: clamp(1.38rem, 2.2vw, 1.72rem);
+  line-height: 1.06;
   letter-spacing: -0.04em;
   font-weight: 700;
 }
@@ -7867,33 +7869,41 @@ body:has(.portfolio-reference-page) {
 
 .profile-sidebar-role {
   color: var(--portfolio-dark-muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 .profile-sidebar-contact-list {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.75rem;
 }
 
 .profile-sidebar-contact-item {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.8rem;
+  gap: 0.85rem;
   align-items: center;
-  padding: 0.9rem 0.95rem;
-  border-radius: 18px;
+  padding: 0.85rem 1rem;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  background: linear-gradient(180deg, rgba(39, 39, 39, 0.98), rgba(34, 34, 34, 0.98));
+  background: linear-gradient(180deg, rgba(40, 40, 40, 0.98), rgba(34, 34, 34, 0.98));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
   text-decoration: none;
+  color: inherit;
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .profile-sidebar-contact-item:hover,
 .profile-sidebar-social-link:hover {
   transform: translateY(-2px);
-  border-color: var(--portfolio-dark-border-strong);
-  background: linear-gradient(180deg, rgba(43, 43, 43, 0.98), rgba(37, 37, 37, 0.98));
+  border-color: rgba(217, 178, 76, 0.22);
+  background: linear-gradient(180deg, rgba(44, 44, 44, 0.98), rgba(38, 38, 38, 0.98));
+}
+
+.profile-sidebar-contact-item:hover .profile-sidebar-contact-icon {
+  border-color: rgba(217, 178, 76, 0.22);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .profile-sidebar-contact-icon,
@@ -7901,37 +7911,41 @@ body:has(.portfolio-reference-page) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.7rem;
+  height: 2.7rem;
   border-radius: 14px;
-  border: 1px solid rgba(217, 178, 76, 0.2);
-  background: rgba(217, 178, 76, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--portfolio-dark-accent);
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .profile-sidebar-contact-copy {
   display: grid;
-  gap: 0.14rem;
+  gap: 0.2rem;
+  min-width: 0;
 }
 
 .profile-sidebar-contact-label {
+  font-family: var(--font-sans);
   color: var(--portfolio-dark-soft);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .profile-sidebar-contact-value {
   color: var(--portfolio-dark-text);
-  font-size: 0.9rem;
-  line-height: 1.45;
+  font-size: 1rem;
+  line-height: 1.55;
+  word-break: break-word;
 }
 
 .profile-sidebar-socials {
   display: flex;
-  gap: 0.8rem;
-  padding-top: 0.15rem;
+  gap: 0.75rem;
+  padding-top: 0.2rem;
 }
 
 .portfolio-reference-main-column {
@@ -7943,11 +7957,17 @@ body:has(.portfolio-reference-page) {
   top: 1.5rem;
   z-index: 30;
   margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .reference-nav-shell {
-  display: inline-flex;
+  display: flex;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 0.45rem;
   border-radius: 22px;
   border: 1px solid var(--portfolio-dark-border);
@@ -7984,14 +8004,89 @@ body:has(.portfolio-reference-page) {
 
 .portfolio-reference-page .nav-mobile-toggle,
 .portfolio-reference-page .nav-mobile-close {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(32, 32, 32, 0.98);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--portfolio-dark-accent);
+  box-shadow: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.portfolio-reference-page .nav-mobile-toggle:focus:not(:focus-visible),
+.portfolio-reference-page .nav-mobile-close:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.portfolio-reference-page .nav-mobile-toggle:focus-visible,
+.portfolio-reference-page .nav-mobile-close:focus-visible {
+  outline: 2px solid rgba(217, 178, 76, 0.45);
+  outline-offset: 2px;
+}
+
+.portfolio-reference-page .nav-mobile-toggle:hover,
+.portfolio-reference-page .nav-mobile-close:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(217, 178, 76, 0.2);
 }
 
 .portfolio-reference-page .premium-mobile-menu {
   background: rgba(22, 22, 22, 0.99);
   border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+.portfolio-reference-page .nav-mobile-kicker {
+  color: var(--portfolio-dark-accent);
+}
+
+.portfolio-reference-page .nav-mobile-title {
+  color: var(--portfolio-dark-text);
+}
+
+.portfolio-reference-page .nav-mobile-link {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--portfolio-dark-text);
+  padding: 1.2rem 1.45rem;
+  gap: 1.05rem;
+  min-height: 3.35rem;
+}
+
+.portfolio-reference-page .nav-mobile-link:hover,
+.portfolio-reference-page .nav-mobile-link--active {
+  padding: 1.2rem 1.45rem;
+  transform: translateY(-1px);
+  color: var(--portfolio-dark-accent);
+  border-color: rgba(217, 178, 76, 0.28);
+  background: rgba(217, 178, 76, 0.1);
+}
+
+.portfolio-reference-page .nav-mobile-link-index {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--portfolio-dark-soft);
+}
+
+.portfolio-reference-page .nav-mobile-overlay {
+  background: rgba(6, 6, 6, 0.62);
+  backdrop-filter: blur(8px);
+}
+
+.portfolio-reference-page .nav-mobile-header {
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.portfolio-reference-page .premium-mobile-menu > .p-5 {
+  padding-left: max(1.25rem, calc(env(safe-area-inset-left, 0px) + 0.25rem));
+  padding-right: max(1.25rem, calc(env(safe-area-inset-right, 0px) + 0.25rem));
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
 }
 
 .portfolio-reference-page .content-section {
@@ -8031,6 +8126,10 @@ body:has(.portfolio-reference-page) {
   color: var(--portfolio-dark-soft);
 }
 
+.portfolio-reference-page .profile-sidebar-contact-label {
+  color: var(--portfolio-dark-soft);
+}
+
 .portfolio-reference-page .gradient-text,
 .portfolio-reference-page .section-header h2,
 .portfolio-reference-page .contact-heading {
@@ -8055,13 +8154,13 @@ body:has(.portfolio-reference-page) {
 }
 
 .hero-reference-bar.hero-reference-bar--dark {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
   margin-bottom: 0;
-  align-items: center;
-  flex-wrap: wrap;
-  row-gap: 0.75rem;
-  column-gap: 1.25rem;
   padding: 0.8rem 1.35rem;
-  border-radius: 9999px;
+  border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(
     180deg,
@@ -8073,6 +8172,13 @@ body:has(.portfolio-reference-page) {
     0 14px 36px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+.hero-reference-bar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.15rem;
 }
 
 .portfolio-reference-page .hero-reference-bar.hero-reference-bar--dark {
@@ -8101,6 +8207,13 @@ body:has(.portfolio-reference-page) {
 .hero-reference-bar--dark .hero-micro-label {
   color: var(--portfolio-dark-text);
   letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
 }
 
 .hero-reference-bar--dark .hero-micro-summary {
@@ -8113,7 +8226,17 @@ body:has(.portfolio-reference-page) {
 
 @media (min-width: 768px) {
   .hero-reference-bar.hero-reference-bar--dark {
+    flex-direction: row;
     flex-wrap: nowrap;
+    align-items: center;
+    column-gap: 1.25rem;
+    border-radius: 9999px;
+  }
+
+  .hero-reference-bar.hero-reference-bar--dark .hero-micro-summary {
+    flex: 1;
+    text-align: right;
+    margin-left: auto;
   }
 }
 
@@ -8466,10 +8589,72 @@ body:has(.portfolio-reference-page) {
     padding: 1rem;
   }
 
+  .portfolio-reference-page .portfolio-reference-layout {
+    gap: 1rem;
+  }
+
   .portfolio-reference-page .content-section,
   .portfolio-reference-page .site-footer {
     padding: 1rem;
     border-radius: 24px;
+  }
+
+  .portfolio-reference-page .profile-sidebar-card {
+    padding: 1rem;
+    border-radius: 24px;
+    gap: 1rem;
+  }
+
+  .portfolio-reference-page .profile-sidebar-top {
+    padding-bottom: 1rem;
+  }
+
+  .portfolio-reference-page .reference-nav-shell {
+    border-radius: 22px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0.4rem 0.45rem;
+  }
+
+  .portfolio-reference-page .reference-top-nav {
+    top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-inline: 0;
+  }
+
+  .portfolio-reference-page .portfolio-reference-sidebar-column {
+    margin-bottom: 0;
+  }
+
+  .portfolio-reference-page .hero-reference-section {
+    padding-top: 1rem !important;
+  }
+
+  .portfolio-reference-page .hero-reference-bar.hero-reference-bar--dark {
+    padding: 0.75rem 1rem;
+    gap: 0.65rem;
+  }
+
+  .portfolio-reference-page .hero-reference-bar-row {
+    gap: 0.7rem 1.2rem;
+  }
+
+  .portfolio-reference-page .hero-reference-bar--dark .hero-micro-summary {
+    text-align: left;
+    margin-left: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .portfolio-reference-page .hero-intro-actions--dark {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .portfolio-reference-page .stat-card--dark {
+    border-radius: 20px;
+    min-height: 5.5rem;
   }
 
   .reference-name-line--dark {
@@ -8487,6 +8672,11 @@ body:has(.portfolio-reference-page) {
   .portfolio-reference-page .contact-social-row,
   .portfolio-reference-page .profile-sidebar-socials {
     flex-wrap: wrap;
+  }
+
+  .portfolio-reference-page .project-card .p-6,
+  .portfolio-reference-page .project-card-content {
+    padding: 1rem !important;
   }
 }
 
@@ -8549,8 +8739,7 @@ body:has(.portfolio-reference-page) {
 .portfolio-reference-page .education-card .section-kicker,
 .portfolio-reference-page .testimonial-card .section-kicker,
 .portfolio-reference-page .experience-role-badge,
-.portfolio-reference-page .about-reference-contact-label,
-.portfolio-reference-page .profile-sidebar-contact-label {
+.portfolio-reference-page .about-reference-contact-label {
   color: rgba(241, 236, 227, 0.7);
 }
 
@@ -8563,7 +8752,8 @@ body:has(.portfolio-reference-page) {
 .portfolio-reference-page .project-card-main-link > h3,
 .portfolio-reference-page .testimonial-name,
 .portfolio-reference-page .contact-heading,
-.portfolio-reference-page .hero-contact-item--dark {
+.portfolio-reference-page .hero-contact-item--dark,
+.portfolio-reference-page .profile-sidebar-name {
   color: var(--portfolio-dark-text);
 }
 
@@ -8587,7 +8777,8 @@ body:has(.portfolio-reference-page) {
 .portfolio-reference-page .project-dialog-architecture,
 .portfolio-reference-page .contact-footer-copy .text-muted-foreground,
 .portfolio-reference-page .contact-alt-link,
-.portfolio-reference-page .footer-tech-line {
+.portfolio-reference-page .footer-tech-line,
+.portfolio-reference-page .profile-sidebar-role {
   color: var(--portfolio-dark-muted);
 }
 

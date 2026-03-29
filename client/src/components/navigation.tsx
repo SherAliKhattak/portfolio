@@ -102,18 +102,18 @@ export default function Navigation() {
                 ))}
               </div>
           </div>
-        </div>
 
-        <div className="nav-mobile-trigger md:hidden">
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="nav-mobile-toggle"
-            data-testid="mobile-menu-button"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="reference-nav-mobile-inner flex md:hidden w-full min-h-[2.85rem] items-center justify-end">
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="nav-mobile-toggle"
+              data-testid="mobile-menu-button"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 

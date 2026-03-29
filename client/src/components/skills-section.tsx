@@ -25,7 +25,7 @@ export default function SkillsSection() {
               Technical Skills
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl">
-              The toolkit behind my work as a Senior App Developer and Flutter developer—from architecture and cross-platform UI to backends, QA, security tooling, AI-assisted workflows, and store releases—plus what I rely on for freelance app delivery.
+              The toolkit behind my work as a Senior App Developer and Flutter developer—from architecture and cross-platform UI to backends, QA, security tooling, and store releases—plus what I rely on for freelance app delivery.
             </p>
           </div>
         </AnimatedSection>
