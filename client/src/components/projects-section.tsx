@@ -118,8 +118,18 @@ export default function ProjectsSection({
               isPortfolioVariant ? "projects-section-top--portfolio" : ""
             }`}
           >
+            {!isPortfolioVariant ? (
+              <div className="projects-section-kicker-row">
+                <p className="section-kicker projects-section-kicker mb-0">Selected work</p>
+                {showViewAll ? (
+                  <Link href="/projects" className="projects-view-all-link" data-testid="projects-view-all">
+                    View All Projects
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                ) : null}
+              </div>
+            ) : null}
             <div className="section-header section-header--left">
-              {!isPortfolioVariant ? <p className="section-kicker mb-3">Selected work</p> : null}
               <h2 className="section-heading-title mb-4" data-testid="section-title">
                 {isPortfolioVariant ? "Portfolio" : "What I Build"}
               </h2>
@@ -132,12 +142,6 @@ export default function ProjectsSection({
                 </p>
               )}
             </div>
-            {showViewAll && !isPortfolioVariant ? (
-              <Link href="/projects" className="projects-view-all-link" data-testid="projects-view-all">
-                View All Projects
-                <ArrowRightIcon className="w-4 h-4" />
-              </Link>
-            ) : null}
           </div>
 
           {isPortfolioVariant ? (
