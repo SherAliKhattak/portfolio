@@ -21,12 +21,12 @@ export default function ExperienceSection() {
       <div className="section-shell">
         <AnimatedSection>
           <div className="section-header section-header--left mb-16">
-            <p className="section-kicker mb-3">Career path</p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-              <span className="gradient-text">Work Experience</span>
+            <p className="section-kicker mb-3">Roles from junior Flutter to senior app & freelance</p>
+            <h2 className="section-heading-title mb-4" data-testid="section-title">
+              Work Experience
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl">
-              Roles focused on mobile delivery, product quality, and collaboration across engineering teams.
+              Timeline from Junior Flutter Developer and Flutter Developer roles through Senior App Developer today, with ongoing Freelance App Developer work—mobile delivery, quality, security-minded practices, and collaboration with product, design, and QA.
             </p>
           </div>
         </AnimatedSection>

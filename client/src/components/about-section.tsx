@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolio-data";
-import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection } from "./animated-section";
-import sherAliPortrait from "@/assets/sher-ali-portrait.png";
-import aboutBackgroundCover from "@/assets/about-background-cover.png";
 import { portfolioUiIcons } from "./portfolio-icons";
 
 const cardVariants = {
@@ -19,47 +16,38 @@ export default function AboutSection() {
   const { personal, experience, education } = portfolioData;
   const {
     briefcase: BriefcaseIcon,
-    external: ExternalIcon,
-    github: GithubIcon,
     graduation: GraduationIcon,
-    linkedin: LinkedinIcon,
-    phone: PhoneIcon,
+    shield: ShieldIcon,
+    folder: FolderIcon,
   } = portfolioUiIcons;
   const currentRole = experience[0];
   const latestEducation = education[0];
-  const conciseSummary =
-    "Software Engineer with 4+ years of experience focused on polished Flutter and React Native products, AI-assisted development, security-minded engineering, and dependable releases across iOS and Android.";
-  const aboutHighlights = [
-    "4+ years of software engineering experience",
-    "20+ shipped projects across multiple industries",
-    "AI, QA, and security-minded product delivery",
-  ];
-  const aboutSnapshot = [
+  const capabilityCards = [
     {
-      label: "Current focus",
-      value: "AI-assisted development and security-minded product delivery",
+      title: "Mobile Apps",
+      copy: "Professional Flutter and React Native applications built for Android and iOS production environments.",
+      Icon: BriefcaseIcon,
     },
     {
-      label: "Availability",
-      value: "Open to collaborations and product-focused roles",
+      title: "Architecture",
+      copy: "Clean Architecture, scalable code structure, and practical engineering decisions for long-term delivery.",
+      Icon: FolderIcon,
+    },
+    {
+      title: "Quality and Security",
+      copy: "QA-minded implementation, Postman workflows, and security-focused testing with dependable releases.",
+      Icon: ShieldIcon,
     },
   ];
 
   return (
     <section id="about" data-section-number="01" className="content-section bg-background">
-      <div className="about-background-cover" aria-hidden="true">
-        <img
-          src={aboutBackgroundCover}
-          alt=""
-          className="about-background-image"
-        />
-      </div>
       <div className="section-shell">
         <AnimatedSection>
           <div className="section-header section-header--left mb-16">
             <p className="section-kicker mb-3">Profile</p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-              <span className="gradient-text">About Me</span>
+            <h2 className="section-heading-title mb-4" data-testid="section-title">
+              About Me
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl">
               A concise overview of how I approach mobile engineering, delivery, and product execution.
@@ -67,147 +55,94 @@ export default function AboutSection() {
           </div>
         </AnimatedSection>
 
-        <div className="about-layout-grid">
+        <motion.div
+          className="about-reference-panel"
+          variants={cardVariants}
+          custom={0}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <motion.div
-            className="about-layout-main"
-            variants={cardVariants}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <Card className="about-main-panel">
-              <CardContent className="p-7 sm:p-8">
-                <p className="section-kicker">Craft + engineering</p>
-                <h3 className="about-main-title mt-4" data-testid="about-title">
-                  My Journey in Software Engineering
-                </h3>
-                <div className="about-main-copy mt-6">
-                  <p
-                    className="about-copy"
-                    data-testid="about-paragraph-1"
-                  >
-                    {conciseSummary}
-                  </p>
-                  <p
-                    className="about-copy"
-                    data-testid="about-paragraph-2"
-                  >
-                    {personal.aboutDetails[1]}
-                  </p>
-                </div>
-                <ul className="about-insight-grid pt-6">
-                  {aboutHighlights.map((item) => (
-                    <li key={item} className="about-insight-item">
-                      <span className="about-insight-dot" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="about-link-row pt-6">
-                  <a href={personal.github} target="_blank" rel="noopener noreferrer" className="about-social-link">
-                    <GithubIcon className="w-4 h-4 flat-social-icon flat-social-icon--github" />
-                    GitHub
-                  </a>
-                  <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="about-social-link">
-                    <LinkedinIcon className="w-4 h-4 flat-social-icon flat-social-icon--linkedin" />
-                    LinkedIn
-                  </a>
-                  <a href={`tel:${personal.phones[0]}`} className="about-social-link">
-                    <PhoneIcon className="w-4 h-4 flat-social-icon flat-social-icon--phone" />
-                    Call
-                  </a>
-                  <a href="#contact" className="about-cta-link" data-testid="about-contact-cta">
-                    Let&apos;s work together
-                    <ExternalIcon className="w-4 h-4" />
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            className="about-layout-summary"
+            className="about-reference-copy-block"
             variants={cardVariants}
             custom={1}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <Card className="about-summary-card">
-              <CardContent className="p-6 sm:p-7 about-summary-content">
-                <div className="about-profile-image-wrap">
-                  <img
-                    src={sherAliPortrait}
-                    alt={personal.name}
-                    className="about-profile-image"
-                  />
-                </div>
-                <div className="about-summary-header">
-                  <p className="section-kicker">At a glance</p>
-                  <h3 className="about-profile-name">{personal.name}</h3>
-                  <p className="about-summary-role">{personal.title}</p>
-                </div>
-
-                <div className="about-summary-stack">
-                  <span className="about-chip">Flutter</span>
-                  <span className="about-chip">React Native</span>
-                  <span className="about-chip">Clean Architecture</span>
-                </div>
-
-                <div className="about-summary-list">
-                  {aboutSnapshot.map((item) => (
-                    <div key={item.label} className="about-summary-row">
-                      <span className="about-contact-label">{item.label}</span>
-                      <span className="about-contact-value">{item.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <h3 className="about-main-title" data-testid="about-title">
+              What I Build
+            </h3>
+            <span className="about-reference-title-accent" aria-hidden="true" />
+            <div className="about-main-copy">
+              <p className="about-copy" data-testid="about-paragraph-1">
+                {personal.summary}
+              </p>
+              <p className="about-copy about-copy--secondary">
+                I focus on building production-ready mobile products with clean UX, practical architecture, and dependable shipping quality across the full development lifecycle.
+              </p>
+            </div>
           </motion.div>
 
           <motion.div
-            className="about-layout-details"
+            className="about-reference-services"
             variants={cardVariants}
             custom={2}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="about-detail-grid grid gap-6 md:grid-cols-2">
-              <Card className="about-detail-card">
-                <CardContent className="p-6">
-                  <div className="about-card-icon">
-                    <BriefcaseIcon className="w-5 h-5" />
+            <div className="about-reference-services-header">
+              <h4 className="about-reference-services-title">What I&apos;m Doing</h4>
+            </div>
+            <div className="about-reference-service-grid">
+              {capabilityCards.map(({ title, copy, Icon }) => (
+                <div key={title} className="about-detail-card about-detail-card--service">
+                  <div className="about-card-icon about-card-icon--reference">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <p className="section-kicker mt-5">Experience</p>
-                  <h4 className="about-detail-title mt-3" data-testid="role-title">Current Role</h4>
-                  <p className="text-foreground font-medium mt-2" data-testid="role-text">
-                    {currentRole.position}
-                  </p>
-                  <p className="text-muted-foreground mt-1">{currentRole.company}</p>
-                  <p className="text-sm text-muted-foreground mt-4">{currentRole.period}</p>
-                </CardContent>
-              </Card>
-
-              <Card className="about-detail-card">
-                <CardContent className="p-6">
-                  <div className="about-card-icon">
-                    <GraduationIcon className="w-5 h-5" />
+                  <div className="about-reference-service-copy">
+                    <h5 className="about-detail-title">{title}</h5>
+                    <p>{copy}</p>
                   </div>
-                  <p className="section-kicker mt-5">Education</p>
-                  <h4 className="about-detail-title mt-3" data-testid="education-title">Academic Foundation</h4>
-                  <p className="text-foreground font-medium mt-2" data-testid="education-text">
-                    {latestEducation.degree} in {latestEducation.field}
-                  </p>
-                  <p className="text-muted-foreground mt-1">{latestEducation.institution}</p>
-                  <p className="text-sm text-muted-foreground mt-4">{latestEducation.period}</p>
-                </CardContent>
-              </Card>
+                </div>
+              ))}
             </div>
           </motion.div>
-        </div>
+
+          <motion.div
+            className="about-reference-meta-grid"
+            variants={cardVariants}
+            custom={3}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className="about-reference-meta-card">
+              <div className="about-card-icon about-card-icon--reference">
+                <BriefcaseIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="about-reference-meta-label">Current Role</p>
+                <p className="about-reference-meta-title">{currentRole.position}</p>
+                <p className="about-reference-meta-copy">{currentRole.company} · {currentRole.period}</p>
+              </div>
+            </div>
+            <div className="about-reference-meta-card">
+              <div className="about-card-icon about-card-icon--reference">
+                <GraduationIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="about-reference-meta-label">Education</p>
+                <p className="about-reference-meta-title">{latestEducation.degree}</p>
+                <p className="about-reference-meta-copy">
+                  {latestEducation.field} · {latestEducation.institution}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

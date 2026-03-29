@@ -63,7 +63,7 @@ import opticalfitVideo from "@/assets/videos/opticalfit-demo.mp4";
 export const portfolioData = {
   personal: {
     name: "Sher Ali Khattak",
-    title: "Full Stack Mobile Developer | AI & Security Enthusiast",
+    title: "Senior App Developer · Flutter Developer · Freelance App Developer",
     location: "",
     email: "skhattak30@gmail.com",
     phones: ["+923325342357", "+923325342357"],
@@ -101,14 +101,14 @@ export const portfolioData = {
       ]
     },
     {
-      position: "Junior App Developer",
+      position: "Junior Flutter Developer",
       company: "Dcodax Pvt, LTD",
       location: "",
       period: "May 2022 - Dec 2023",
       responsibilities: [
-        "Architected applications from scratch based on client requirements, and troubleshoot existing features focusing on seamless UI, performance optimization, and clean architecture.",
+        "Built and maintained Flutter applications from scratch based on client requirements, debugging and refining features with a focus on seamless UI, performance, and clean architecture.",
         "Boosted app user engagement by 40% by enhancing UI with Rive and Lottie animations.",
-        "Worked under the leadership of Senior App developers to enhance existing applications."
+        "Worked under senior Flutter and app developers to enhance existing applications."
       ]
     },
     {
@@ -125,18 +125,18 @@ export const portfolioData = {
 
   education: [
     {
-      degree: "Bachelor of Science",
+      degree: "Bachelor of Science (B.Sc.)",
       field: "Computer Systems Engineering",
       institution: "University of Engineering & Technology, Peshawar",
       period: "08/2018 - 08/2022",
-      description: "Gained experience in computer architecture, embedded systems, programming, networking, and software development. Focused on automation, system optimization, and designed innovative computing solutions."
+      description: "Undergraduate education in computer architecture, embedded systems, software engineering, networking, and systems design. Coursework and projects emphasized automation, optimization, and building reliable computing solutions—foundational for mobile and full-stack app development."
     },
     {
-      degree: "Pre Engineering",
-      field: "FSc Pre-Engineering", 
+      degree: "FSc Pre-Engineering",
+      field: "Pre-Engineering",
       institution: "Islamia College Peshawar",
       period: "05/2015 - 04/2017",
-      description: "Developed a strong foundation in mathematics, physics, and chemistry, with a focus on problem-solving, analytical thinking, and technical concepts essential for engineering studies."
+      description: "Pre-university program in mathematics, physics, and chemistry with strong problem-solving, analytical reasoning, and technical preparation for engineering and computer systems studies."
     }
   ],
 

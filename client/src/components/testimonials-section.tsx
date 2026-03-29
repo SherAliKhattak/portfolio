@@ -22,8 +22,8 @@ export default function TestimonialsSection() {
         <AnimatedSection>
           <div className="section-header section-header--left mb-16">
             <p className="section-kicker mb-3">Social proof</p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-              <span className="gradient-text">What Clients Say</span>
+            <h2 className="section-heading-title mb-4" data-testid="section-title">
+              What Clients Say
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl">
               Feedback from clients who trusted me with product design, implementation, and delivery.

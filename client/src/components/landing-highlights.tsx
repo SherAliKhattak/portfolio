@@ -11,17 +11,12 @@ const reveal = {
 };
 
 export default function LandingHighlights() {
-  const { briefcase: BriefcaseIcon, magic: MagicIcon, shield: ShieldIcon, star: StarIcon } = portfolioUiIcons;
+  const { briefcase: BriefcaseIcon, shield: ShieldIcon, star: StarIcon } = portfolioUiIcons;
   const featureCards = [
     {
       title: "Cross-Platform Excellence",
       copy: "Building polished Flutter and React Native products for production environments across iOS and Android.",
       Icon: BriefcaseIcon,
-    },
-    {
-      title: "AI-Assisted Delivery",
-      copy: "Using Claude, Cursor, and AI-first workflows to move faster while keeping delivery practical and clean.",
-      Icon: MagicIcon,
     },
     {
       title: "Quality and Security",
@@ -36,7 +31,7 @@ export default function LandingHighlights() {
   ];
 
   return (
-    <section className="relative pb-12 sm:pb-16">
+    <section className="content-section content-section--compact bg-background">
       <div className="section-shell">
         <motion.div
           className="highlights-grid-clean"

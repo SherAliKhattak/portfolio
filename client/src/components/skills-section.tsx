@@ -20,18 +20,18 @@ export default function SkillsSection() {
       <div className="section-shell">
         <AnimatedSection>
           <div className="section-header section-header--left mb-16">
-            <p className="section-kicker mb-3">Capabilities</p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-              <span className="gradient-text">Technical Skills</span>
+            <p className="section-kicker mb-3">Stack, quality & delivery</p>
+            <h2 className="section-heading-title mb-4" data-testid="section-title">
+              Technical Skills
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl">
-              A practical toolkit built around cross-platform development, shipping products, and maintaining quality.
+              The toolkit behind my work as a Senior App Developer and Flutter developer—from architecture and cross-platform UI to backends, QA, security tooling, AI-assisted workflows, and store releases—plus what I rely on for freelance app delivery.
             </p>
           </div>
         </AnimatedSection>
 
         <motion.div
-          className="skills-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="skills-grid grid md:grid-cols-2 gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}

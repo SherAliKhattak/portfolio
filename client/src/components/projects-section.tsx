@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolio-data";
@@ -11,12 +11,84 @@ import sectionBackgroundAlt1 from "@/assets/section-background-alt-1.png";
 type ProjectsSectionProps = {
   limit?: number;
   showViewAll?: boolean;
+  variant?: "featured" | "portfolio";
 };
 
-export default function ProjectsSection({ limit, showViewAll = false }: ProjectsSectionProps) {
+type PortfolioFilterId = "all" | "applications" | "web-development" | "ui-ux";
+
+const portfolioFilters: Array<{ id: PortfolioFilterId; label: string }> = [
+  { id: "all", label: "All" },
+  { id: "applications", label: "Applications" },
+  { id: "web-development", label: "Web development" },
+  { id: "ui-ux", label: "UI/UX" },
+];
+
+const getProjectFilterId = (project: (typeof portfolioData.projects)[number]): PortfolioFilterId => {
+  const title = project.title.toLowerCase();
+  const category = project.category?.toLowerCase() ?? "";
+  const platform = project.platform?.toLowerCase() ?? "";
+  const linkType = project.linkType?.toLowerCase() ?? "";
+  const technologies = project.technologies.map((tech) => tech.toLowerCase());
+
+  if (
+    category.includes("website") ||
+    platform.includes("lovable") ||
+    linkType.includes("website") ||
+    technologies.some((tech) => tech.includes("web"))
+  ) {
+    return "web-development";
+  }
+
+  if (
+    title.includes("opticalfit") ||
+    title.includes("fit freak") ||
+    technologies.some(
+      (tech) =>
+        tech.includes("sports ui") ||
+        tech.includes("augmented reality") ||
+        tech.includes("arkit") ||
+        tech.includes("design")
+    )
+  ) {
+    return "ui-ux";
+  }
+
+  return "applications";
+};
+
+const getPortfolioSubtitle = (project: (typeof portfolioData.projects)[number]) => {
+  const filterId = getProjectFilterId(project);
+
+  if (filterId === "web-development") {
+    return "Web development";
+  }
+
+  if (filterId === "ui-ux") {
+    return "UI/UX";
+  }
+
+  return "Applications";
+};
+
+export default function ProjectsSection({
+  limit,
+  showViewAll = false,
+  variant = "featured",
+}: ProjectsSectionProps) {
   const { projects } = portfolioData;
-  const visibleProjects = typeof limit === "number" ? projects.slice(0, limit) : projects;
+  const [activeFilter, setActiveFilter] = useState<PortfolioFilterId>("all");
   const [selectedProjectIndex, setSelectedProjectIndex] = useState<number | null>(null);
+  const isPortfolioVariant = variant === "portfolio";
+  const usePortfolioCardLayout = isPortfolioVariant || showViewAll;
+  const visibleProjects = useMemo(() => {
+    const limitedProjects = typeof limit === "number" ? projects.slice(0, limit) : projects;
+
+    if (!isPortfolioVariant || activeFilter === "all") {
+      return limitedProjects;
+    }
+
+    return limitedProjects.filter((project) => getProjectFilterId(project) === activeFilter);
+  }, [activeFilter, isPortfolioVariant, limit, projects]);
   const {
     appStore: AppStoreIcon,
     arrowRight: ArrowRightIcon,
@@ -27,7 +99,11 @@ export default function ProjectsSection({ limit, showViewAll = false }: Projects
     typeof selectedProjectIndex === "number" ? projects[selectedProjectIndex] : null;
 
   return (
-    <section id="projects" data-section-number="02" className="content-section bg-secondary/30">
+    <section
+      id="projects"
+      data-section-number={isPortfolioVariant ? undefined : "02"}
+      className={`content-section bg-secondary/30 ${isPortfolioVariant ? "portfolio-gallery-section" : ""}`}
+    >
       <div className="projects-background-cover" aria-hidden="true">
         <img
           src={sectionBackgroundAlt1}
@@ -37,27 +113,57 @@ export default function ProjectsSection({ limit, showViewAll = false }: Projects
       </div>
       <div className="section-shell">
         <AnimatedSection>
-          <div className="projects-section-top mb-16">
+          <div
+            className={`projects-section-top mb-16 ${
+              isPortfolioVariant ? "projects-section-top--portfolio" : ""
+            }`}
+          >
             <div className="section-header section-header--left">
-              <p className="section-kicker mb-3">Selected products</p>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-                <span className="gradient-text">Featured Projects</span>
+              {!isPortfolioVariant ? <p className="section-kicker mb-3">Selected work</p> : null}
+              <h2 className="section-heading-title mb-4" data-testid="section-title">
+                {isPortfolioVariant ? "Portfolio" : "What I Build"}
               </h2>
-              <p className="text-muted-foreground mt-4 max-w-3xl">
-                A collection of products I&apos;ve developed, ranging from mobile applications and AI-assisted community platforms to healthcare and e-commerce solutions
-              </p>
+              {isPortfolioVariant ? (
+                <span className="portfolio-gallery-title-accent" aria-hidden="true" />
+              ) : (
+                <p className="text-muted-foreground mt-4 max-w-3xl">
+                  A selected set of mobile and product experiences focused on real delivery,
+                  practical architecture, and polished execution.
+                </p>
+              )}
             </div>
-            {showViewAll ? (
+            {showViewAll && !isPortfolioVariant ? (
               <Link href="/projects" className="projects-view-all-link" data-testid="projects-view-all">
                 View All Projects
                 <ArrowRightIcon className="w-4 h-4" />
               </Link>
             ) : null}
           </div>
+
+          {isPortfolioVariant ? (
+            <div className="portfolio-filter-row" role="tablist" aria-label="Project categories">
+              {portfolioFilters.map((filter) => (
+                <button
+                  key={filter.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeFilter === filter.id}
+                  className={`portfolio-filter-button ${
+                    activeFilter === filter.id ? "portfolio-filter-button--active" : ""
+                  }`}
+                  onClick={() => setActiveFilter(filter.id)}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          ) : null}
         </AnimatedSection>
 
         <motion.div
-          className="projects-grid grid md:grid-cols-2 gap-8"
+          className={`projects-grid grid gap-8 ${
+            isPortfolioVariant ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"
+          }`}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.05 }}
@@ -67,8 +173,6 @@ export default function ProjectsSection({ limit, showViewAll = false }: Projects
           }}
         >
           {visibleProjects.map((project, index) => {
-            const projectBadge = project.category || project.platform || "Project";
-            const projectSubtitle = project.platform || project.status || project.linkType || project.technologies[0];
             const projectIndex = projects.indexOf(project);
             const actionLinks = [
               project.playStore
@@ -82,6 +186,7 @@ export default function ProjectsSection({ limit, showViewAll = false }: Projects
                 : null,
             ].filter(Boolean) as Array<{ href: string; label: string; Icon: typeof PlayStoreIcon }>;
             const openProjectDialog = () => setSelectedProjectIndex(projectIndex);
+            const portfolioSubtitle = getPortfolioSubtitle(project);
             
             return (
               <motion.div
@@ -92,76 +197,122 @@ export default function ProjectsSection({ limit, showViewAll = false }: Projects
                 }}
               >
                 <Card
-                  className="project-card project-card--premium rounded-lg overflow-hidden"
+                  className={`project-card project-card--premium rounded-lg overflow-hidden ${
+                    usePortfolioCardLayout ? "project-card--portfolio-gallery" : ""
+                  }`}
                   data-testid={`project-card-${projectIndex}`}
                 >
-                  <CardContent className="p-6">
+                  <CardContent
+                    className={
+                      usePortfolioCardLayout
+                        ? "project-card-content project-card-content--portfolio"
+                        : "project-card-content project-card-content--featured"
+                    }
+                  >
                     <button
                       type="button"
-                      className="project-card-main-link project-card-open-button"
+                      className={`project-card-main-link project-card-open-button ${
+                        usePortfolioCardLayout ? "project-card-main-link--portfolio" : ""
+                      }`}
                       onClick={openProjectDialog}
                     >
-                      {(project.image || project.gallery?.[0]) && (
-                        <div className="project-media project-media--reference mb-6 overflow-hidden aspect-[1.62/1] relative">
-                          <span className="project-media-badge">{projectBadge}</span>
-                          <img 
-                            src={project.image || project.gallery?.[0]} 
-                            alt={project.title}
-                            className="object-cover w-full h-full transition-transform duration-500"
-                            data-testid={`project-image-${projectIndex}`}
-                          />
+                      {(usePortfolioCardLayout || project.image || project.gallery?.[0]) && (
+                        <div
+                          className={`project-media project-media--reference overflow-hidden relative ${
+                            usePortfolioCardLayout
+                              ? "project-media--portfolio aspect-[1.6/1]"
+                              : "mb-6 aspect-[1.62/1]"
+                          }`}
+                        >
+                          {usePortfolioCardLayout ? (
+                            (project.image || project.gallery?.[0]) ? (
+                              <img
+                                src={project.image || project.gallery?.[0]}
+                                alt={project.title}
+                                className="project-portfolio-image"
+                                data-testid={`project-image-${projectIndex}`}
+                              />
+                            ) : null
+                          ) : (
+                            <>
+                              <span className="project-media-badge">
+                                {project.category || project.platform || "Project"}
+                              </span>
+                              <img 
+                                src={project.image || project.gallery?.[0]} 
+                                alt={project.title}
+                                className="object-cover w-full h-full transition-transform duration-500"
+                                data-testid={`project-image-${projectIndex}`}
+                              />
+                            </>
+                          )}
                         </div>
                       )}
-                      <h3 className="text-xl font-bold mb-3" data-testid={`project-title-${projectIndex}`}>
-                        {project.title}
-                      </h3>
-                      {projectSubtitle ? (
-                        <p className="project-role-line">{projectSubtitle}</p>
-                      ) : null}
-                      <p className="project-description project-description--reference" data-testid={`project-description-${projectIndex}`}>
-                        {project.description}
-                      </p>
+                      <div className={usePortfolioCardLayout ? "project-gallery-copy" : "project-copy-block"}>
+                        <h3 className="text-xl font-bold mb-3" data-testid={`project-title-${projectIndex}`}>
+                          {project.title}
+                        </h3>
+                        {portfolioSubtitle ? (
+                          <p className={`project-role-line ${usePortfolioCardLayout ? "project-role-line--portfolio" : ""}`}>
+                            {usePortfolioCardLayout
+                              ? portfolioSubtitle
+                              : project.platform || project.status || project.linkType || project.technologies[0]}
+                          </p>
+                        ) : null}
+                        {!usePortfolioCardLayout ? (
+                          <p
+                            className="project-description project-description--reference"
+                            data-testid={`project-description-${projectIndex}`}
+                          >
+                            <span className="project-description-text">{project.description}</span>
+                          </p>
+                        ) : null}
+                      </div>
                     </button>
 
-                    <div className="project-tech-row">
-                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                        <span
-                          key={tech}
-                          className="project-tech-chip project-tech-chip--reference"
-                          data-testid={`project-tech-${projectIndex}-${techIndex}`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <span className="project-tech-chip project-tech-chip--reference">
-                          +{project.technologies.length - 4} more
-                        </span>
-                      )}
-                    </div>
+                    {!usePortfolioCardLayout ? (
+                      <>
+                        <div className="project-tech-row">
+                          {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                            <span
+                              key={tech}
+                              className="project-tech-chip project-tech-chip--reference"
+                              data-testid={`project-tech-${projectIndex}-${techIndex}`}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {project.technologies.length > 4 && (
+                            <span className="project-tech-chip project-tech-chip--reference">
+                              +{project.technologies.length - 4} more
+                            </span>
+                          )}
+                        </div>
 
-                    <div className="project-actions-row">
-                      {actionLinks.slice(0, 2).map(({ href, label, Icon }) => (
-                        <a
-                          key={`${project.title}-${label}`}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-action-button"
-                        >
-                          <Icon className="w-4 h-4" />
-                          {label}
-                        </a>
-                      ))}
-                      <button
-                        type="button"
-                        className="project-action-button project-action-button--detail"
-                        onClick={openProjectDialog}
-                      >
-                        <ArrowRightIcon className="w-4 h-4" />
-                        View Details
-                      </button>
-                    </div>
+                        <div className="project-actions-row">
+                          {actionLinks.slice(0, 2).map(({ href, label, Icon }) => (
+                            <a
+                              key={`${project.title}-${label}`}
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="project-action-button"
+                            >
+                              <Icon className="w-4 h-4" />
+                              {label}
+                            </a>
+                          ))}
+                          <button
+                            type="button"
+                            className="project-action-button project-action-button--detail"
+                            onClick={openProjectDialog}
+                          >
+                            <ArrowRightIcon className="w-4 h-4" />
+                            View Details
+                          </button>
+                        </div>
+                      </>
+                    ) : null}
                   </CardContent>
                 </Card>
               </motion.div>

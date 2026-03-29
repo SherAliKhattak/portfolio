@@ -21,12 +21,12 @@ export default function EducationSection() {
       <div className="section-shell">
         <AnimatedSection>
           <div className="section-header section-header--left mb-16">
-            <p className="section-kicker mb-3">Learning path</p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4" data-testid="section-title">
-              <span className="gradient-text">Education</span>
+            <p className="section-kicker mb-3">Degrees & pre-engineering</p>
+            <h2 className="section-heading-title mb-4" data-testid="section-title">
+              Education
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl">
-              Academic foundations that shaped my engineering mindset and problem-solving approach.
+              Bachelor&apos;s in Computer Systems Engineering and FSc pre-engineering—the formal foundation that supports my path as a Junior Flutter Developer, Flutter Developer, Senior App Developer, and Freelance App Developer.
             </p>
           </div>
         </AnimatedSection>

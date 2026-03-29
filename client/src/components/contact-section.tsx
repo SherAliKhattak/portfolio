@@ -8,10 +8,8 @@ export default function ContactSection() {
   const { personal } = portfolioData;
   const {
     appStore: AppStoreIcon,
-    email: EmailIcon,
     github: GithubIcon,
     linkedin: LinkedinIcon,
-    phone: PhoneIcon,
     playStore: PlayStoreIcon,
   } = portfolioUiIcons;
 
@@ -28,7 +26,7 @@ export default function ContactSection() {
         <AnimatedSection>
           <div className="section-header section-header--center mb-16">
             <p className="section-kicker mb-3">Start a conversation</p>
-            <h2 className="contact-heading mb-4" data-testid="section-title">
+            <h2 className="contact-heading section-heading-title mb-4" data-testid="section-title">
               <span className="contact-heading-line">Get In</span>
               <span className="contact-heading-line contact-heading-line--accent">Touch</span>
             </h2>
@@ -54,9 +52,6 @@ export default function ContactSection() {
           </a>
 
           <div className="contact-social-row" aria-label="Contact links">
-            <a href={`tel:${personal.phones[0]}`} className="contact-social-link" data-testid="contact-phone-primary" title="Phone">
-              <PhoneIcon className="w-5 h-5 flat-social-icon flat-social-icon--phone" />
-            </a>
             <a href={personal.github} target="_blank" rel="noopener noreferrer" className="contact-social-link" data-testid="contact-github" title="GitHub">
               <GithubIcon className="w-5 h-5 flat-social-icon flat-social-icon--github" />
             </a>
@@ -76,15 +71,9 @@ export default function ContactSection() {
           </div>
 
           <div className="contact-footer-copy">
-            <p className="text-muted-foreground">You can also reach me directly at</p>
-            <a
-              href={`tel:${personal.phones[1]}`}
-              className="contact-alt-link"
-              data-testid="contact-phone-secondary"
-            >
-              <PhoneIcon className="w-5 h-5 flat-social-icon flat-social-icon--phone" />
-              {personal.phones[1]}
-            </a>
+            <p className="text-muted-foreground">
+              Best way to reach me is by email. Social links are here for everything else.
+            </p>
           </div>
         </motion.div>
       </div>

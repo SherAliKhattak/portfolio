@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
 
 const navLinks = [
   { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
 ];
 
 export default function Navigation() {
+  const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
@@ -27,6 +27,12 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScrollNav);
     return () => window.removeEventListener("scroll", handleScrollNav);
   }, []);
+
+  useEffect(() => {
+    if (location === "/projects") {
+      setActiveSection("projects");
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +67,11 @@ export default function Navigation() {
         top: offsetTop,
         behavior: "smooth",
       });
+      setActiveSection(targetId);
+    } else {
+      const destination =
+        targetId === "home" ? "/" : targetId === "projects" ? "/projects" : `/#${targetId}`;
+      window.location.assign(destination);
     }
     setIsMobileMenuOpen(false);
   };
@@ -68,21 +79,17 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        className="reference-top-nav"
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className={`section-shell section-shell--nav ${scrolled ? "section-shell--nav-scrolled" : ""} hidden md:block`}>
-          <div
-            className={`premium-nav nav-frame ${
-              scrolled ? "nav-scrolled" : ""
-            }`}
-          >
-            <div className="hidden md:flex nav-desktop-layout">
+        <div className={`reference-nav-shell ${scrolled ? "reference-nav-shell--scrolled" : ""}`}>
+          <div className="hidden md:flex nav-desktop-layout">
               <div className="nav-links-row">
                 {navLinks.map((link) => (
                   <button
+                    type="button"
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
                     className={`nav-link ${
@@ -94,13 +101,12 @@ export default function Navigation() {
                   </button>
                 ))}
               </div>
-
-            </div>
           </div>
         </div>
 
         <div className="nav-mobile-trigger md:hidden">
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="nav-mobile-toggle"
             data-testid="mobile-menu-button"
@@ -139,9 +145,11 @@ export default function Navigation() {
                     <p className="nav-mobile-title">Explore portfolio</p>
                   </div>
                   <button
+                    type="button"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="nav-mobile-close"
                     data-testid="close-menu"
+                    aria-label="Close menu"
                   >
                     <X size={22} />
                   </button>
@@ -150,6 +158,7 @@ export default function Navigation() {
                 <nav className="nav-mobile-links-list">
                   {navLinks.map((link, index) => (
                     <motion.button
+                      type="button"
                       key={link.href}
                       onClick={() => handleNavClick(link.href)}
                       className={`nav-mobile-link ${
