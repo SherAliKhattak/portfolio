@@ -87,8 +87,8 @@ export default function HeroSection() {
                   View Portfolio
                 </Button>
                 <a
-                  href="/assets/SherAliKhattakCV.pdf"
-                  download="SherAliKhattakCV.pdf"
+                  href="/assets/Sher_Ali_Khattak_updated_CV.pdf"
+                  download="Sher_Ali_Khattak_updated_CV.pdf"
                   className="hero-secondary-btn hero-secondary-btn--dark"
                   data-testid="button-download-resume"
                 >
