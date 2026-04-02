@@ -9364,25 +9364,42 @@ body:has(.portfolio-reference-page) {
 .portfolio-reference-page .portfolio-filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.9rem;
+  gap: 0.75rem;
   align-items: center;
   margin-bottom: 2rem;
 }
 
+.portfolio-reference-page .portfolio-filter-results {
+  margin: 0 0 0 auto;
+  color: rgba(221, 214, 203, 0.68);
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .portfolio-reference-page .portfolio-filter-button {
-  padding: 0;
-  border: none;
+  min-height: 2.4rem;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
   background: transparent;
   color: rgba(230, 223, 211, 0.62);
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   line-height: 1;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .portfolio-reference-page .portfolio-filter-button:hover,
 .portfolio-reference-page .portfolio-filter-button--active {
   color: #e5b94f;
+  border-color: rgba(217, 178, 76, 0.22);
+  background: rgba(217, 178, 76, 0.08);
+}
+
+.portfolio-reference-page .portfolio-filter-button:focus-visible {
+  outline: 2px solid rgba(217, 178, 76, 0.38);
+  outline-offset: 2px;
 }
 
 .portfolio-reference-page .portfolio-gallery-section .projects-grid {
@@ -9410,6 +9427,12 @@ body:has(.portfolio-reference-page) {
   gap: 1rem;
   width: 100%;
   text-align: left;
+}
+
+.portfolio-reference-page .project-card-open-button:focus-visible {
+  outline: 2px solid rgba(217, 178, 76, 0.35);
+  outline-offset: 4px;
+  border-radius: 22px;
 }
 
 .portfolio-reference-page .project-media--portfolio {
@@ -9452,6 +9475,18 @@ body:has(.portfolio-reference-page) {
   text-transform: none;
 }
 
+.portfolio-reference-page .project-description--portfolio-preview {
+  margin: 0.18rem 0 0;
+  color: rgba(221, 214, 203, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .portfolio-reference-page .project-card--portfolio-gallery:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.11) !important;
@@ -9465,6 +9500,55 @@ body:has(.portfolio-reference-page) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.portfolio-reference-page .projects-empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 0.55rem;
+  padding: 1.3rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(40, 40, 40, 0.96), rgba(32, 32, 32, 0.98));
+}
+
+.portfolio-reference-page .projects-empty-title {
+  margin: 0;
+  color: var(--portfolio-dark-text);
+  font-size: 1.04rem;
+  font-weight: 600;
+}
+
+.portfolio-reference-page .projects-empty-copy {
+  margin: 0;
+  color: var(--portfolio-dark-muted);
+  font-size: 0.92rem;
+}
+
+.portfolio-reference-page .projects-empty-reset {
+  margin-top: 0.3rem;
+  min-height: 2.6rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--portfolio-dark-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  transition: border-color 0.22s ease, color 0.22s ease, background 0.22s ease;
+}
+
+.portfolio-reference-page .projects-empty-reset:hover {
+  border-color: rgba(217, 178, 76, 0.24);
+  color: var(--portfolio-dark-accent);
+  background: rgba(217, 178, 76, 0.08);
+}
+
+.portfolio-reference-page .projects-empty-reset:focus-visible {
+  outline: 2px solid rgba(217, 178, 76, 0.45);
+  outline-offset: 2px;
 }
 
 /* Education dark-theme refinement */
@@ -9641,8 +9725,16 @@ body:has(.portfolio-reference-page) {
     margin-bottom: 1.7rem;
   }
 
+  .portfolio-reference-page .portfolio-filter-results {
+    width: 100%;
+    margin-left: 0;
+    font-size: 0.76rem;
+  }
+
   .portfolio-reference-page .portfolio-filter-button {
-    font-size: 0.92rem;
+    min-height: 2.2rem;
+    padding: 0 0.75rem;
+    font-size: 0.85rem;
   }
 
   .portfolio-reference-page .project-card--portfolio-gallery .project-card-main-link h3 {
@@ -9651,6 +9743,13 @@ body:has(.portfolio-reference-page) {
 
   .portfolio-reference-page .project-role-line--portfolio {
     font-size: 0.84rem;
+  }
+
+  .portfolio-reference-page .project-description--portfolio-preview {
+    font-size: 0.84rem;
+    line-height: 1.45;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
   }
 
   .portfolio-reference-page .skill-category-title {

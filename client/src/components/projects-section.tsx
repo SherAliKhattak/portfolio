@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolio-data";
@@ -14,6 +14,23 @@ type ProjectsSectionProps = {
   variant?: "featured" | "portfolio";
 };
 
+type PortfolioProject = {
+  title: string;
+  description: string;
+  technologies: string[];
+  icon: string;
+  gallery: string[];
+  image?: string;
+  playStore?: string;
+  appStore?: string;
+  link?: string;
+  linkType?: string;
+  video?: string;
+  status?: string;
+  category?: string;
+  platform?: string;
+};
+
 type PortfolioFilterId = "all" | "applications" | "web-development" | "ui-ux";
 
 const portfolioFilters: Array<{ id: PortfolioFilterId; label: string }> = [
@@ -23,7 +40,7 @@ const portfolioFilters: Array<{ id: PortfolioFilterId; label: string }> = [
   { id: "ui-ux", label: "UI/UX" },
 ];
 
-const getProjectFilterId = (project: (typeof portfolioData.projects)[number]): PortfolioFilterId => {
+const getProjectFilterId = (project: PortfolioProject): PortfolioFilterId => {
   const title = project.title.toLowerCase();
   const category = project.category?.toLowerCase() ?? "";
   const platform = project.platform?.toLowerCase() ?? "";
@@ -41,10 +58,8 @@ const getProjectFilterId = (project: (typeof portfolioData.projects)[number]): P
 
   if (
     title.includes("opticalfit") ||
-    title.includes("fit freak") ||
     technologies.some(
       (tech) =>
-        tech.includes("sports ui") ||
         tech.includes("augmented reality") ||
         tech.includes("arkit") ||
         tech.includes("design")
@@ -56,7 +71,7 @@ const getProjectFilterId = (project: (typeof portfolioData.projects)[number]): P
   return "applications";
 };
 
-const getPortfolioSubtitle = (project: (typeof portfolioData.projects)[number]) => {
+const getPortfolioSubtitle = (project: PortfolioProject) => {
   const filterId = getProjectFilterId(project);
 
   if (filterId === "web-development") {
@@ -75,20 +90,43 @@ export default function ProjectsSection({
   showViewAll = false,
   variant = "featured",
 }: ProjectsSectionProps) {
-  const { projects } = portfolioData;
+  const projects = portfolioData.projects as PortfolioProject[];
   const [activeFilter, setActiveFilter] = useState<PortfolioFilterId>("all");
   const [selectedProjectIndex, setSelectedProjectIndex] = useState<number | null>(null);
   const isPortfolioVariant = variant === "portfolio";
   const usePortfolioCardLayout = isPortfolioVariant || showViewAll;
-  const visibleProjects = useMemo(() => {
+  const projectsByFilter = useMemo(() => {
     const limitedProjects = typeof limit === "number" ? projects.slice(0, limit) : projects;
-
-    if (!isPortfolioVariant || activeFilter === "all") {
-      return limitedProjects;
-    }
-
-    return limitedProjects.filter((project) => getProjectFilterId(project) === activeFilter);
-  }, [activeFilter, isPortfolioVariant, limit, projects]);
+    return limitedProjects.reduce<Record<PortfolioFilterId, PortfolioProject[]>>(
+      (acc, project) => {
+        acc.all.push(project);
+        const filterId = getProjectFilterId(project);
+        acc[filterId].push(project);
+        return acc;
+      },
+      { all: [], applications: [], "web-development": [], "ui-ux": [] },
+    );
+  }, [limit, projects]);
+  const visibleProjects = isPortfolioVariant
+    ? projectsByFilter[activeFilter]
+    : projectsByFilter.all;
+  const filterCounts = useMemo(
+    () =>
+      ({
+        all: projectsByFilter.all.length,
+        applications: projectsByFilter.applications.length,
+        "web-development": projectsByFilter["web-development"].length,
+        "ui-ux": projectsByFilter["ui-ux"].length,
+      }) satisfies Record<PortfolioFilterId, number>,
+    [projectsByFilter],
+  );
+  const availableFilters = portfolioFilters.filter(
+    (filter) => filter.id === "all" || filterCounts[filter.id] > 0,
+  );
+  const visibleCount = visibleProjects.length;
+  const activeFilterLabel =
+    portfolioFilters.find((filter) => filter.id === activeFilter)?.label ?? "All";
+  const activeFilterTabId = `projects-filter-${activeFilter}`;
   const {
     appStore: AppStoreIcon,
     arrowRight: ArrowRightIcon,
@@ -97,6 +135,15 @@ export default function ProjectsSection({
   } = portfolioUiIcons;
   const selectedProject =
     typeof selectedProjectIndex === "number" ? projects[selectedProjectIndex] : null;
+
+  useEffect(() => {
+    if (!isPortfolioVariant || activeFilter === "all") {
+      return;
+    }
+    if (filterCounts[activeFilter] === 0) {
+      setActiveFilter("all");
+    }
+  }, [activeFilter, filterCounts, isPortfolioVariant]);
 
   return (
     <section
@@ -146,11 +193,13 @@ export default function ProjectsSection({
 
           {isPortfolioVariant ? (
             <div className="portfolio-filter-row" role="tablist" aria-label="Project categories">
-              {portfolioFilters.map((filter) => (
+              {availableFilters.map((filter) => (
                 <button
                   key={filter.id}
                   type="button"
                   role="tab"
+                  id={`projects-filter-${filter.id}`}
+                  aria-controls="projects-grid-panel"
                   aria-selected={activeFilter === filter.id}
                   className={`portfolio-filter-button ${
                     activeFilter === filter.id ? "portfolio-filter-button--active" : ""
@@ -160,23 +209,31 @@ export default function ProjectsSection({
                   {filter.label}
                 </button>
               ))}
+              <p className="portfolio-filter-results" aria-live="polite">
+                {visibleCount} project{visibleCount === 1 ? "" : "s"}
+              </p>
             </div>
           ) : null}
         </AnimatedSection>
 
-        <motion.div
-          className={`projects-grid grid gap-8 ${
-            isPortfolioVariant ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"
-          }`}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.08 } },
-          }}
-        >
-          {visibleProjects.map((project, index) => {
+        {visibleCount > 0 ? (
+          <motion.div
+            id="projects-grid-panel"
+            role="tabpanel"
+            aria-labelledby={activeFilterTabId}
+            aria-label={`${activeFilterLabel} projects`}
+            className={`projects-grid grid gap-8 ${
+              isPortfolioVariant ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"
+            }`}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.08 } },
+            }}
+          >
+            {visibleProjects.map((project, index) => {
             const projectIndex = projects.indexOf(project);
             const actionLinks = [
               project.playStore
@@ -259,8 +316,16 @@ export default function ProjectsSection({
                         {portfolioSubtitle ? (
                           <p className={`project-role-line ${usePortfolioCardLayout ? "project-role-line--portfolio" : ""}`}>
                             {usePortfolioCardLayout
-                              ? portfolioSubtitle
+                              ? project.platform || portfolioSubtitle
                               : project.platform || project.status || project.linkType || project.technologies[0]}
+                          </p>
+                        ) : null}
+                        {usePortfolioCardLayout ? (
+                          <p
+                            className="project-description project-description--portfolio-preview"
+                            data-testid={`project-description-${projectIndex}`}
+                          >
+                            {project.description}
                           </p>
                         ) : null}
                         {!usePortfolioCardLayout ? (
@@ -321,8 +386,23 @@ export default function ProjectsSection({
                 </Card>
               </motion.div>
             );
-          })}
-        </motion.div>
+            })}
+          </motion.div>
+        ) : (
+          <div className="projects-empty-state" role="status">
+            <p className="projects-empty-title">No projects in this category yet.</p>
+            <p className="projects-empty-copy">Try another filter to see more work.</p>
+            {isPortfolioVariant ? (
+              <button
+                type="button"
+                className="projects-empty-reset"
+                onClick={() => setActiveFilter("all")}
+              >
+                Show all projects
+              </button>
+            ) : null}
+          </div>
+        )}
 
         <Dialog
           open={selectedProjectIndex !== null}

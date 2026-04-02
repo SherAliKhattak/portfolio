@@ -30,15 +30,10 @@ import jjdeliveries5 from "@/assets/jjdeliveries-5.png";
 import truckkaro1 from "@/assets/truckkaro-1.png";
 import truckkaro2 from "@/assets/truckkaro-2.png";
 import truckkaro3 from "@/assets/truckkaro-3.png";
-import caioClub1 from "@/assets/caio-club-1.png";
-import caioClub2 from "@/assets/caio-club-2.png";
-import caioClub3 from "@/assets/caio-club-3.png";
-import caioClub4 from "@/assets/caio-club-4.png";
-import caioClub5 from "@/assets/caio-club-5.png";
-import caioClub6 from "@/assets/caio-club-6.png";
+import upalertsLogo from "@/assets/upalerts-logo.png";
 
-// Import FitFreak screenshot
-import fitfreak1 from "@/assets/fitfreak/1.jpeg";
+// Import FitFreak cover + screenshots
+import fitfreakCover from "@/assets/fitfreak-cover.png";
 import fitfreak2 from "@/assets/fitfreak/2.jpeg";
 import fitfreak3 from "@/assets/fitfreak/3.jpeg";
 import fitfreak4 from "@/assets/fitfreak/4.jpeg";
@@ -173,6 +168,7 @@ export const portfolioData = {
       title: "PopDarts Score Keeper",
       description: "Take your Popdarts game to the next level with the official Popdarts Scorekeeper app. Effortlessly track scores for multiple players, stay connected with the Popdarts community for updates and challenges, and use the Stat Track feature to log trick shots. Perfect for game nights, tournaments, and practice.",
       technologies: ["Flutter", "Score Tracking", "Sports UI", "Firebase", "WebSockets"],
+      platform: "Application",
       icon: "Trophy",
       gallery: [popdarts1, popdarts2, popdarts3, popdarts4, popdarts5, popdarts6, popdarts7, popdarts8],
       playStore: "https://play.google.com/store/apps/details?id=com.firebase.popdarts&hl=en"
@@ -182,23 +178,31 @@ export const portfolioData = {
       description: "A comprehensive fitness application designed to empower users on their training journey. Features include personalized onboarding with role selection (Trainer/Regular User), goal-oriented filters (activity level, exercise mode, goals), real-time notifications for workout challenges and subscriptions, and an AI-powered 'Ask GPT' assistant for personalized diet and exercise advice.",
       technologies: ["Flutter", "AI Integration", "Firebase", "Real-time Notifications"],
       icon: "Heart",
-      image: fitfreak1,
-      gallery: [fitfreak1, fitfreak2, fitfreak3, fitfreak4, fitfreak5, fitfreak6, fitfreak7, fitfreak8, fitfreak9, fitfreak10],
+      image: fitfreakCover,
+      gallery: [
+        fitfreakCover,
+        fitfreak2,
+        fitfreak3,
+        fitfreak4,
+        fitfreak5,
+        fitfreak6,
+        fitfreak7,
+        fitfreak8,
+        fitfreak9,
+        fitfreak10,
+      ],
       playStore: "https://play.google.com/store/apps/details?id=com.duseca.fitfreak",
       appStore: "https://apps.apple.com/us/app/fit-freak-pro/id6742347988"
     },
     {
-      title: "Chief AI Officers Club",
-      description: "A community website and member-to-member chatting platform developed in Lovable using an AI-first workflow and prompt engineering for business leaders. Includes a public marketing website, member directory, admin dashboard, announcements, messaging flows, and member management experiences designed for an exclusive executive network.",
-      technologies: ["Lovable", "AI-First", "Prompt Engineering", "Web Platform", "Community App", "Messaging"],
+      title: "UpAlerts: AI Writer & Alerts",
+      description: "Productivity app for Upwork freelancers: real-time job alerts for new postings, fast search and apply flows, an AI cover letter builder with personas tailored to each job, job insights and category views—plus subscriptions and in-app purchases for premium alerts and proposals.",
+      technologies: ["iOS", "Android", "Push Notifications", "In-App Purchases", "AI Integration", "Productivity"],
       icon: "FileText",
-      status: "Live Platform",
-      category: "Website & Web App",
-      platform: "Lovable",
-      image: caioClub1,
-      gallery: [caioClub1, caioClub2, caioClub3, caioClub4, caioClub5, caioClub6],
-      link: "https://www.global-masters.org/",
-      linkType: "Website"
+      image: upalertsLogo,
+      gallery: [upalertsLogo],
+      playStore: "https://play.google.com/store/apps/details?id=com.upalerts.app&hl=en",
+      appStore: "https://apps.apple.com/us/app/upalerts-ai-writer-alerts/id1658154022"
     },
     {
       title: "FastWheel: Buy & Sell Cars",
