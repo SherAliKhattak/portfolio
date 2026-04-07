@@ -1,3 +1,5 @@
+import fastwheelCover from "@/assets/fastwheel-cover.png";
+import fastwheelLogo from "@/assets/fastwheel-logo.png";
 import fastwheel1 from "@/assets/fastwheel-1.png";
 import fastwheel2 from "@/assets/fastwheel-2.png";
 import fastwheel3 from "@/assets/fastwheel-3.png";
@@ -209,7 +211,8 @@ export const portfolioData = {
       description: "A leading marketplace to buy and sell new or used cars. Search over half a million cars, use advanced filters (make, model, price, mileage), create adverts in minutes, and get instant notifications on saved searches. Features free car valuation, dealer reviews, and finance options.",
       technologies: ["Flutter", "Firebase", "Marketplace"],
       icon: "CarFront",
-      gallery: [fastwheel1, fastwheel2, fastwheel3, fastwheel4],
+      image: fastwheelCover,
+      gallery: [fastwheelCover, fastwheelLogo, fastwheel1, fastwheel2, fastwheel3, fastwheel4],
       playStore: "https://play.google.com/store/apps/details?id=com.wheeldeals.wheelsanddeals"
     },
     {
