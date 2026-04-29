@@ -20,7 +20,7 @@ export default function Portfolio() {
           <Navigation />
           <HeroSection />
           <LandingHighlights />
-          <ProjectsSection limit={4} showViewAll />
+          <ProjectsSection limit={5} showViewAll />
           <SkillsSection />
           <ExperienceSection />
           <EducationSection />

@@ -46,6 +46,15 @@ const getProjectFilterId = (project: PortfolioProject): PortfolioFilterId => {
   const platform = project.platform?.toLowerCase() ?? "";
   const linkType = project.linkType?.toLowerCase() ?? "";
   const technologies = project.technologies.map((tech) => tech.toLowerCase());
+  const hasMobileStoreLinks = Boolean(project.playStore || project.appStore);
+
+  if (
+    hasMobileStoreLinks ||
+    platform.includes("application") ||
+    technologies.some((tech) => tech.includes("flutter") || tech.includes("react native"))
+  ) {
+    return "applications";
+  }
 
   if (
     category.includes("website") ||

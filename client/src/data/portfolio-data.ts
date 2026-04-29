@@ -80,7 +80,7 @@ export const portfolioData = {
       position: "Senior App Developer",
       company: "Beacon Energy Pvt Ltd",
       location: "",
-      period: "Sep 2025 - Present",
+      period: "Jan 2026 - Present",
       responsibilities: [
         "Led the architecture, development, and maintenance of multiple cross-platform mobile applications resulting in a 3000+ active user base, 99.9% uptime, and a 40% increase in overall performance across iOS and Android production environments.",
         "Collaborated with Quality assurance team, Managers, Designers and NOC to add features according to customer satisfaction."
@@ -90,7 +90,7 @@ export const portfolioData = {
       position: "Flutter Developer",
       company: "Duseca Software",
       location: "",
-      period: "Jan 2024 - Aug 2025",
+      period: "Jan 2024 - Dec 2025",
       responsibilities: [
         "Improved code quality and on-time delivery compliance by 70% through collaboration with 4 cross-functional teams.",
         "Introduced and integrated software testing frameworks and QA tools, improving code coverage and reducing post-release bug reports by 30% through systematic quality assurance processes.",
@@ -221,7 +221,11 @@ export const portfolioData = {
       technologies: ["Flutter", "ARKit", "Augmented Reality", "E-commerce"],
       icon: "Camera",
       gallery: [opticalfitLogo, opticalfit1, opticalfit2, opticalfit3, opticalfit4, opticalfit5, opticalfit6, opticalfit7, opticalfit8],
-      video: opticalfitVideo
+      video: opticalfitVideo,
+      playStore: "https://play.google.com/store/apps/details?id=com.optical.fit",
+      appStore: "https://apps.apple.com/ua/app/opticalfit/id6759705065#information",
+      link: "https://opticalfit.us/",
+      linkType: "Website"
     },
     {
       title: "iHealthCure Lab",
