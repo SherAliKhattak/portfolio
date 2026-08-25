@@ -2,48 +2,37 @@ import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection } from "./animated-section";
+import { SectionHeader } from "./section-header";
 import { portfolioUiIcons } from "./portfolio-icons";
-import experienceBackgroundCover from "@/assets/experience-background-cover.png";
 
 export default function ExperienceSection() {
   const { experience } = portfolioData;
   const { calendar: CalendarIcon, chevronRight: ChevronRightIcon, mapPin: MapPinIcon } = portfolioUiIcons;
 
   return (
-    <section id="experience" data-section-number="04" className="content-section bg-secondary/30">
-      <div className="experience-background-cover" aria-hidden="true">
-        <img
-          src={experienceBackgroundCover}
-          alt=""
-          className="experience-background-image"
-        />
-      </div>
+    <section id="experience" className="content-section">
       <div className="section-shell">
         <AnimatedSection>
-          <div className="section-header section-header--left mb-16">
-            <p className="section-kicker mb-3">Roles from junior Flutter to senior app & freelance</p>
-            <h2 className="section-heading-title mb-4" data-testid="section-title">
-              Work Experience
-            </h2>
-            <p className="text-muted-foreground mt-4 max-w-3xl">
-              Timeline from Junior Flutter Developer and Flutter Developer roles through Senior App Developer today, with ongoing Freelance App Developer work—mobile delivery, quality, security-minded practices, and collaboration with product, design, and QA.
-            </p>
-          </div>
+          <SectionHeader
+            kicker="Career"
+            title="Work experience"
+            description="From junior Flutter roles through senior app development and freelance delivery, with a focus on mobile quality and collaboration."
+          />
         </AnimatedSection>
 
-        <div className="experience-stack max-w-5xl mx-auto">
+        <div className="experience-stack">
           {experience.map((exp, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              key={`${exp.company}-${exp.position}`}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ delay: index * 0.06, duration: 0.45 }}
               className="experience-entry timeline-item"
               data-testid={`experience-item-${index}`}
             >
               <Card className="premium-panel experience-card">
-                <CardContent className="experience-card-content p-6">
+                <CardContent className="experience-card-content">
                   <div className="experience-card-header">
                     <div className="experience-heading">
                       <p className="experience-role-badge">Role {String(index + 1).padStart(2, "0")}</p>

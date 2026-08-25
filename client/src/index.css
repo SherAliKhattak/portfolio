@@ -3,36 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --background: 60 20% 98%;
-  --foreground: 40 5% 10%;
-  --card: 0 0% 100%;
-  --card-foreground: 40 5% 10%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 40 5% 10%;
-  --primary: 165 34% 26%;
-  --primary-foreground: 60 20% 98%;
-  --secondary: 60 18% 96%;
-  --secondary-foreground: 40 5% 10%;
-  --muted: 96 24% 92%;
-  --muted-foreground: 60 3% 41%;
-  --accent: 165 34% 26%;
-  --accent-foreground: 60 20% 98%;
-  --destructive: hsl(356.3033 90.5579% 54.3137%);
-  --destructive-foreground: hsl(0 0% 100%);
-  --border: 45 11% 88%;
-  --input: 45 11% 88%;
-  --ring: 165 34% 26%;
-  --chart-1: 165 34% 26%;
-  --chart-2: 96 24% 92%;
-  --chart-3: 45 11% 88%;
-  --chart-4: 165 24% 38%;
-  --chart-5: 40 5% 10%;
-  --radius: 0.75rem;
+  color-scheme: dark;
+  --background: 0 0% 8%;
+  --foreground: 36 29% 94%;
+  --card: 0 0% 13%;
+  --card-foreground: 36 29% 94%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 36 29% 94%;
+  --primary: 43 64% 58%;
+  --primary-foreground: 28 19% 10%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 36 29% 94%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 36 14% 74%;
+  --accent: 43 64% 58%;
+  --accent-foreground: 28 19% 10%;
+  --destructive: 356 91% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 43 64% 58%;
+  --chart-1: 43 64% 58%;
+  --chart-2: 0 0% 20%;
+  --chart-3: 0 0% 16%;
+  --chart-4: 43 50% 46%;
+  --chart-5: 36 29% 94%;
+  --radius: 1rem;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Sora', sans-serif;
-  --font-mono: 'Plus Jakarta Sans', sans-serif;
-  --accent-soft: #E8F0E6;
-  --card-border-light: #d9ddd7;
+  --font-mono: 'Plus Jakarta Sans', ui-monospace, monospace;
+  --accent-soft: rgba(217, 178, 76, 0.12);
+  --card-border-light: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
@@ -44,6 +45,12 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   section[id] {
     scroll-margin-top: 7.5rem;
   }
@@ -52,16 +59,18 @@
     @apply font-sans antialiased bg-background text-foreground;
     font-family: var(--font-sans);
     font-feature-settings: "cv02" 1, "cv03" 1, "cv04" 1, "cv11" 1;
-    background:
-      radial-gradient(circle at top left, hsla(39 68% 64% / 0.12), transparent 28%),
-      radial-gradient(circle at 85% 10%, hsla(16 61% 58% / 0.10), transparent 24%),
-      linear-gradient(180deg, hsl(220 18% 7%) 0%, hsl(220 18% 8%) 45%, hsl(222 18% 6%) 100%);
+    background: #141414;
     min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p, li, blockquote {
+    text-wrap: pretty;
   }
 
   body::before {
@@ -7950,6 +7959,8 @@ body:has(.portfolio-reference-page) {
 
 .portfolio-reference-main-column {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .reference-top-nav {
@@ -8101,7 +8112,7 @@ body:has(.portfolio-reference-page) {
 }
 
 .portfolio-reference-page .content-section:last-of-type {
-  margin-bottom: 0;
+  margin-bottom: 2rem;
 }
 
 .portfolio-reference-page .section-shell,
@@ -10003,4 +10014,555 @@ body:has(.portfolio-reference-page) .detail-store-actions-grid {
 body:has(.portfolio-reference-page) .detail-store-button {
   min-width: 11rem;
   justify-content: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Design system cohesion
+   One type scale, spacing rhythm, radius, and surface language for the live
+   portfolio. Later rules win over accumulated section-specific patches.
+--------------------------------------------------------------------------- */
+.portfolio-reference-page {
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 999px;
+  --type-kicker: 0.6875rem;
+  --type-meta: 0.8125rem;
+  --type-body: 0.95rem;
+  --type-body-lh: 1.7;
+  --type-card: clamp(1.15rem, 1.7vw, 1.35rem);
+  --type-section: clamp(1.75rem, 3.2vw, 2.35rem);
+  --type-display: clamp(2rem, 4vw, 3.1rem);
+  --ease: 0.22s ease;
+  --focus-ring: 2px solid color-mix(in srgb, var(--portfolio-dark-accent) 55%, transparent);
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-hover: rgba(217, 178, 76, 0.22);
+}
+
+.portfolio-reference-page :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--portfolio-dark-text);
+  text-wrap: balance;
+}
+
+.portfolio-reference-page :is(p, li, blockquote) {
+  text-wrap: pretty;
+}
+
+.portfolio-reference-page :is(
+  .section-kicker,
+  .eyebrow-chip,
+  .hero-micro-label,
+  .experience-role-badge,
+  .project-role-line,
+  .project-media-badge,
+  .hero-primary-btn--dark,
+  .hero-secondary-btn--dark,
+  .hero-text-link--dark,
+  .skill-tag,
+  .project-tech-chip,
+  .portfolio-filter-button
+) {
+  text-box: trim-both cap alphabetic;
+}
+
+.portfolio-reference-page :is(a, button, [role="tab"], [role="button"]):focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.portfolio-reference-page .section-header {
+  opacity: 1;
+  transform: none;
+}
+
+.portfolio-reference-page .section-header--standard {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 42rem;
+  margin-block-end: var(--space-8);
+  padding-inline-start: 0;
+}
+
+.portfolio-reference-page .content-section--compact .section-header.section-header--standard {
+  margin-bottom: 0.75rem !important;
+  margin-block-end: 0.75rem !important;
+}
+
+.portfolio-reference-page .section-header-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+
+.portfolio-reference-page .section-kicker,
+.portfolio-reference-page .hero-kicker--dark,
+.portfolio-reference-page .hero-micro-label,
+.portfolio-reference-page .experience-role-badge,
+.portfolio-reference-page .project-role-line:not(.project-role-line--portfolio) {
+  margin: 0;
+  color: var(--portfolio-dark-accent) !important;
+  font-family: var(--font-sans);
+  font-size: var(--type-kicker);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.portfolio-reference-page .section-heading-title,
+.portfolio-reference-page .section-header h2.section-heading-title,
+.portfolio-reference-page #projects .section-header h2.section-heading-title,
+.portfolio-reference-page .projects-section-top--portfolio h2 {
+  margin: 0;
+  color: var(--portfolio-dark-text);
+  font-size: var(--type-section) !important;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.12 !important;
+}
+
+.portfolio-reference-page .section-lede,
+.portfolio-reference-page .section-header .section-lede,
+.portfolio-reference-page #projects .section-header .text-muted-foreground {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--portfolio-dark-muted) !important;
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+}
+
+.portfolio-reference-page .content-section {
+  margin-bottom: var(--space-5);
+  padding: var(--space-6) !important;
+  border-radius: var(--radius-xl) !important;
+  border: 1px solid var(--surface-border);
+}
+
+.portfolio-reference-page .content-section--compact {
+  padding: 1.15rem !important;
+}
+
+.portfolio-reference-page .projects-grid,
+.portfolio-reference-page .skills-grid,
+.portfolio-reference-page .education-grid,
+.portfolio-reference-page .experience-stack {
+  max-width: none;
+  margin-inline: 0;
+  gap: var(--space-5) !important;
+}
+
+.portfolio-reference-page .highlights-grid-clean {
+  max-width: none;
+  margin-inline: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem !important;
+}
+
+.portfolio-reference-page .highlight-feature-card,
+.portfolio-reference-page .skill-category-card,
+.portfolio-reference-page .education-card,
+.portfolio-reference-page .experience-card,
+.portfolio-reference-page .project-card--premium,
+.portfolio-reference-page .stat-card--dark {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--surface-border) !important;
+  background: color-mix(in srgb, #232323 92%, black) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  transition: transform var(--ease), border-color var(--ease), background var(--ease);
+}
+
+.portfolio-reference-page .highlight-feature-card:hover,
+.portfolio-reference-page .skill-category-card:hover,
+.portfolio-reference-page .education-card:hover,
+.portfolio-reference-page .experience-card:hover,
+.portfolio-reference-page .project-card--premium:hover {
+  transform: translateY(-2px);
+  border-color: var(--surface-hover) !important;
+}
+
+.portfolio-reference-page .highlight-feature-card {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  padding: 1.1rem 1.15rem;
+}
+
+.portfolio-reference-page .highlight-feature-icon {
+  margin-bottom: 0;
+}
+
+.portfolio-reference-page .highlight-feature-title,
+.portfolio-reference-page .highlight-feature-copy {
+  margin-top: 0;
+}
+
+.portfolio-reference-page .highlight-feature-icon,
+.portfolio-reference-page .skill-icon-badge,
+.portfolio-reference-page .education-icon-wrap,
+.portfolio-reference-page .experience-bullet,
+.portfolio-reference-page .profile-sidebar-contact-icon,
+.portfolio-reference-page .profile-sidebar-social-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  min-inline-size: 2.5rem;
+  min-block-size: 2.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.portfolio-reference-page .highlight-feature-title,
+.portfolio-reference-page .skill-category-title,
+.portfolio-reference-page .experience-position,
+.portfolio-reference-page .education-degree,
+.portfolio-reference-page .project-card-title,
+.portfolio-reference-page .project-card-main-link h3,
+.portfolio-reference-page .project-card-main-link .project-card-title {
+  margin: 0 !important;
+  color: var(--portfolio-dark-text) !important;
+  -webkit-text-fill-color: var(--portfolio-dark-text);
+  font-size: var(--type-card) !important;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2 !important;
+}
+
+.portfolio-reference-page .highlight-feature-copy,
+.portfolio-reference-page .hero-intro-copy--dark,
+.portfolio-reference-page .education-description,
+.portfolio-reference-page .experience-list-item,
+.portfolio-reference-page .project-description--reference,
+.portfolio-reference-page .project-description--portfolio-preview {
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: var(--portfolio-dark-muted) !important;
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+}
+
+.portfolio-reference-page .skill-card-content,
+.portfolio-reference-page .education-card-content,
+.portfolio-reference-page .experience-card-content,
+.portfolio-reference-page .project-card-content {
+  display: grid;
+  gap: var(--space-4);
+  min-height: 0;
+  padding: var(--space-5) !important;
+}
+
+.portfolio-reference-page .experience-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.portfolio-reference-page .experience-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.portfolio-reference-page .experience-list-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.portfolio-reference-page .reference-name-line--dark {
+  font-size: var(--type-display);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.portfolio-reference-page .hero-profession-line--dark {
+  margin: 0;
+  color: var(--portfolio-dark-muted);
+  font-family: var(--font-sans);
+  font-size: var(--type-body);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.portfolio-reference-page .hero-primary-btn--dark,
+.portfolio-reference-page .hero-secondary-btn--dark,
+.portfolio-reference-page .hero-text-link--dark,
+.portfolio-reference-page .project-action-button,
+.portfolio-reference-page .projects-view-all-link,
+.portfolio-reference-page .detail-store-button,
+.portfolio-reference-page .projects-empty-reset,
+.portfolio-reference-page .not-found-section .hero-primary-btn--dark {
+  min-height: 2.75rem;
+  min-inline-size: 2.75rem;
+  padding-inline: 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--type-meta);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.portfolio-reference-page .hero-primary-btn--dark svg,
+.portfolio-reference-page .hero-secondary-btn--dark svg {
+  margin-right: 0;
+}
+
+.portfolio-reference-page .hero-secondary-btn--dark,
+.portfolio-reference-page .hero-text-link--dark {
+  gap: 0.5rem;
+}
+
+.portfolio-reference-page .skill-tag,
+.portfolio-reference-page .project-tech-chip,
+.portfolio-reference-page .experience-period-chip,
+.portfolio-reference-page .education-period-chip,
+.portfolio-reference-page .portfolio-filter-button,
+.portfolio-reference-page .project-media-badge,
+.portfolio-reference-page .eyebrow-chip--dark {
+  min-height: 2.25rem;
+  min-block-size: 2.25rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--type-meta);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-reference-page .site-footer {
+  margin-top: 2rem;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.portfolio-reference-page .site-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  padding: 1.25rem 0.35rem 0.35rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+.portfolio-reference-page .site-footer-copy {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+  margin: 0;
+  color: var(--portfolio-dark-muted);
+  font-size: var(--type-meta);
+  line-height: 1.4;
+}
+
+.portfolio-reference-page .site-footer-sep {
+  color: rgba(241, 236, 227, 0.28);
+}
+
+.portfolio-reference-page .site-footer-role {
+  color: var(--portfolio-dark-soft);
+}
+
+.portfolio-reference-page .site-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.portfolio-reference-page .site-footer a.site-footer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  min-width: 2.7rem;
+  min-height: 2.7rem;
+  min-inline-size: 2.7rem;
+  min-block-size: 2.7rem;
+  padding: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--portfolio-dark-accent);
+  box-shadow: none;
+  text-decoration: none;
+  transform: none;
+  transition: border-color var(--ease), background var(--ease), color var(--ease);
+}
+
+.portfolio-reference-page .site-footer a.site-footer-link svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  margin: 0 !important;
+  display: block;
+  flex-shrink: 0;
+  fill: currentColor !important;
+  stroke: none !important;
+  color: var(--portfolio-dark-accent) !important;
+}
+
+.portfolio-reference-page .site-footer a.site-footer-link:hover {
+  transform: translateY(-1px);
+  color: var(--portfolio-dark-accent);
+  border-color: var(--surface-hover);
+  background: rgba(217, 178, 76, 0.1);
+}
+
+.portfolio-reference-page .site-footer a.site-footer-link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.portfolio-reference-layout--single {
+  min-height: calc(100vh - 4rem);
+}
+
+.portfolio-reference-page .not-found-section {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  min-height: calc(100vh - 4.5rem);
+  align-content: center;
+}
+
+.portfolio-reference-page .not-found-section .section-heading-title {
+  max-width: 18ch;
+}
+
+.portfolio-reference-page .portfolio-gallery-title-accent {
+  display: none;
+}
+
+.portfolio-reference-page #projects .projects-section-top:not(.projects-section-top--portfolio) {
+  position: relative;
+  width: 100%;
+}
+
+.portfolio-reference-page #projects .projects-section-top:not(.projects-section-top--portfolio) .section-header--standard {
+  padding-inline-end: 12.5rem;
+}
+
+.portfolio-reference-page #projects .projects-view-all-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  margin: 0;
+  min-height: 2.25rem;
+  height: 2.25rem;
+  padding-inline: 0.9rem;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-reference-page .highlights-grid-clean {
+    grid-template-columns: 1fr;
+    gap: 0.75rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-reference-page .content-section,
+  .portfolio-reference-page .profile-sidebar-card {
+    padding: var(--space-5) !important;
+    border-radius: var(--radius-lg) !important;
+  }
+
+  .portfolio-reference-page .site-footer {
+    margin-top: 1.5rem;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .portfolio-reference-page .section-header--standard {
+    margin-block-end: var(--space-6);
+  }
+
+  .portfolio-reference-page .content-section--compact .section-header.section-header--standard {
+    margin-bottom: 0.75rem !important;
+    margin-block-end: 0.75rem !important;
+  }
+
+  .portfolio-reference-page .reference-name-line--dark {
+    font-size: 1.85rem;
+  }
+
+  .portfolio-reference-page .site-footer-inner {
+    align-items: center;
+  }
+
+  .portfolio-reference-page .site-footer-copy {
+    max-width: 100%;
+  }
+
+  .portfolio-reference-page #projects .projects-section-top:not(.projects-section-top--portfolio) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-reference-page #projects .projects-section-top:not(.projects-section-top--portfolio) .section-header--standard {
+    padding-inline-end: 0;
+  }
+
+  .portfolio-reference-page #projects .projects-view-all-link {
+    position: static;
+    align-self: flex-end;
+    margin-top: 0.15rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .portfolio-reference-page :is(
+    .nav-link,
+    .hero-primary-btn--dark,
+    .hero-secondary-btn--dark,
+    .hero-text-link--dark,
+    .project-action-button,
+    .projects-view-all-link,
+    .site-footer-link,
+    .profile-sidebar-social-link,
+    .nav-mobile-toggle
+  ) {
+    min-height: 2.75rem;
+    min-inline-size: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-reference-page :is(
+    .highlight-feature-card,
+    .skill-category-card,
+    .education-card,
+    .experience-card,
+    .project-card--premium,
+    .nav-link,
+    .site-footer-link,
+    .profile-sidebar-contact-item,
+    .profile-sidebar-social-link
+  ) {
+    transition: none;
+  }
+
+  .portfolio-reference-page .scroll-indicator--dark {
+    animation: none !important;
+  }
 }

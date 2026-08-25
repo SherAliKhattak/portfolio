@@ -60,7 +60,7 @@ import opticalfitVideo from "@/assets/videos/opticalfit-demo.mp4";
 export const portfolioData = {
   personal: {
     name: "Sher Ali Khattak",
-    title: "Senior App Developer · Flutter Developer · Freelance App Developer",
+    title: "Full Stack Mobile Developer",
     location: "",
     email: "skhattak30@gmail.com",
     phones: ["+923325342357", "+923325342357"],
@@ -110,8 +110,8 @@ export const portfolioData = {
     },
     {
       position: "Freelance App Developer",
-      company: "Self-employed",
-      location: "Remote",
+      company: "Upwork",
+      location: "",
       period: "2021 - Present",
       responsibilities: [
         "Worked on 10+ mobile applications on time and within budget.",

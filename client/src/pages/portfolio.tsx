@@ -16,16 +16,18 @@ export default function Portfolio() {
           <ProfileSidebar />
         </aside>
 
-        <main className="portfolio-reference-main-column">
+        <div className="portfolio-reference-main-column">
           <Navigation />
-          <HeroSection />
-          <LandingHighlights />
-          <ProjectsSection limit={5} showViewAll />
-          <SkillsSection />
-          <ExperienceSection />
-          <EducationSection />
+          <main>
+            <HeroSection />
+            <LandingHighlights />
+            <ProjectsSection limit={5} showViewAll />
+            <SkillsSection />
+            <ExperienceSection />
+            <EducationSection />
+          </main>
           <Footer />
-        </main>
+        </div>
       </div>
     </div>
   );

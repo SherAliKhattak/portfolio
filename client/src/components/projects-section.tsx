@@ -5,8 +5,8 @@ import { portfolioData } from "@/data/portfolio-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { AnimatedSection } from "./animated-section";
+import { SectionHeader } from "./section-header";
 import { portfolioUiIcons } from "./portfolio-icons";
-import sectionBackgroundAlt1 from "@/assets/section-background-alt-1.png";
 
 type ProjectsSectionProps = {
   limit?: number;
@@ -157,47 +157,30 @@ export default function ProjectsSection({
   return (
     <section
       id="projects"
-      data-section-number={isPortfolioVariant ? undefined : "02"}
-      className={`content-section bg-secondary/30 ${isPortfolioVariant ? "portfolio-gallery-section" : ""}`}
+      className={`content-section ${isPortfolioVariant ? "portfolio-gallery-section" : ""}`}
     >
-      <div className="projects-background-cover" aria-hidden="true">
-        <img
-          src={sectionBackgroundAlt1}
-          alt=""
-          className="projects-background-image"
-        />
-      </div>
       <div className="section-shell">
         <AnimatedSection>
           <div
-            className={`projects-section-top mb-10 md:mb-16 ${
+            className={`projects-section-top ${
               isPortfolioVariant ? "projects-section-top--portfolio" : ""
             }`}
           >
-            {!isPortfolioVariant ? (
-              <div className="projects-section-kicker-row">
-                <p className="section-kicker projects-section-kicker mb-0">Selected work</p>
-                {showViewAll ? (
-                  <Link href="/projects" className="projects-view-all-link" data-testid="projects-view-all">
-                    View All Projects
-                    <ArrowRightIcon className="w-4 h-4" />
-                  </Link>
-                ) : null}
-              </div>
+            <SectionHeader
+              kicker={isPortfolioVariant ? "Archive" : "Selected work"}
+              title={isPortfolioVariant ? "Portfolio" : "What I build"}
+              description={
+                isPortfolioVariant
+                  ? "All shipped work, grouped by product type."
+                  : "Mobile and product work focused on real delivery, practical architecture, and polished execution."
+              }
+            />
+            {showViewAll ? (
+              <Link href="/projects" className="projects-view-all-link" data-testid="projects-view-all">
+                View all projects
+                <ArrowRightIcon className="w-4 h-4" />
+              </Link>
             ) : null}
-            <div className="section-header section-header--left">
-              <h2 className="section-heading-title mb-4" data-testid="section-title">
-                {isPortfolioVariant ? "Portfolio" : "What I Build"}
-              </h2>
-              {isPortfolioVariant ? (
-                <span className="portfolio-gallery-title-accent" aria-hidden="true" />
-              ) : (
-                <p className="text-muted-foreground mt-4 max-w-3xl">
-                  A selected set of mobile and product experiences focused on real delivery,
-                  practical architecture, and polished execution.
-                </p>
-              )}
-            </div>
           </div>
 
           {isPortfolioVariant ? (
@@ -319,7 +302,7 @@ export default function ProjectsSection({
                         </div>
                       )}
                       <div className={usePortfolioCardLayout ? "project-gallery-copy" : "project-copy-block"}>
-                        <h3 className="text-xl font-bold mb-3" data-testid={`project-title-${projectIndex}`}>
+                        <h3 className="project-card-title" data-testid={`project-title-${projectIndex}`}>
                           {project.title}
                         </h3>
                         {portfolioSubtitle ? (

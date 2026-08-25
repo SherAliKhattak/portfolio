@@ -4,16 +4,16 @@ import { Button } from "@/components/ui/button";
 import { portfolioUiIcons } from "./portfolio-icons";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+  transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
 };
 
 const stagger = {
   animate: {
     transition: {
       staggerChildren: 0.08,
-      delayChildren: 0.1,
+      delayChildren: 0.08,
     },
   },
 };
@@ -24,7 +24,7 @@ export default function HeroSection() {
   const stats = [
     { value: "4+", label: "Years experience" },
     { value: "20+", label: "Projects shipped" },
-    { value: "iOS + Android", label: "Production-ready app delivery" },
+    { value: "2", label: "iOS & Android platforms" },
   ];
 
   const handleProjectsClick = () => {
@@ -55,7 +55,7 @@ export default function HeroSection() {
           <motion.div variants={fadeInUp} className="hero-reference-bar hero-reference-bar--dark">
             <div className="hero-reference-bar-row flex flex-wrap items-center">
               <span className="eyebrow-chip eyebrow-chip--dark">Available for opportunities</span>
-              <span className="hero-micro-label">Senior App Developer Portfolio</span>
+              <span className="hero-micro-label">Full Stack Mobile Developer</span>
             </div>
             <p className="hero-micro-summary">
               Cross-platform apps, clean architecture, and reliable product execution.
@@ -64,7 +64,7 @@ export default function HeroSection() {
 
           <div className="hero-reference-grid-dark">
             <motion.div variants={fadeInUp} className="hero-copy-column hero-copy-column--reference-dark">
-              <p className="hero-kicker hero-kicker--dark">Hello There!</p>
+              <p className="hero-kicker hero-kicker--dark">Introduction</p>
               <div className="reference-name-wrap" data-testid="hero-title">
                 <h1 className="reference-name-line reference-name-line--dark">
                   Flutter-focused engineer crafting polished mobile and product experiences.
@@ -92,7 +92,7 @@ export default function HeroSection() {
                   className="hero-secondary-btn hero-secondary-btn--dark"
                   data-testid="button-download-resume"
                 >
-                  <ExternalIcon className="w-4 h-4 mr-2" />
+                  <ExternalIcon className="w-4 h-4" />
                   Resume
                 </a>
                 <a
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 onClick={handleScrollDown}
                 className="scroll-indicator scroll-indicator--dark"
                 data-testid="button-scroll-down"
-                aria-label="Scroll to about section"
+                aria-label="Scroll to selected work"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
